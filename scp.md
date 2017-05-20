@@ -12,7 +12,7 @@ scp
 
 ##expect配合
 ```bash
-hosts="123.57.84.211###30022###root###mallMG6688";
+hosts="192.168.1.101###22###root###abc123";
 host=(${hosts//###/ })
 expect -c "
 	spawn scp -r -P ${host[1]} /tmp/dir ${host[2]}@${host[0]}:/tmp/
