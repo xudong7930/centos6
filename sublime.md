@@ -76,53 +76,59 @@ import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d
 ## 3. 设置
 ```json
 {
-	"bold_folder_labels": true,
-	"close_windows_when_empty": false,
-	"color_scheme": "Packages/User/Kuroir Theme.tmTheme",
-	"default_line_ending": "unix",
-	"draw_minimap_border": true,
-	"draw_white_space": "all",
-	"ensure_newline_at_eof_on_save": true,
-	"fade_fold_buttons": false,
-	"font_options":
-	[
-		"no bold",
-		"no_italic"
-	],
-	"font_size": 28,
-	"highlight_line": true,
-	"highlight_modified_tabs": true,
-	"ignored_packages":
-	[
-		"Vintage"
-	],
-	"indent_guide_options":
-	[
-		"draw_normal",
-		"draw_active"
-	],
-	"line_numbers": true,
-	"line_padding_bottom": 2,
-	"line_padding_top": 2,
-	"margin": 0,
-	"overlay_scroll_bars": "enabled",
-	"preview_on_click": false,
-	"rulers":
-	[
-		80,
-		100
-	],
-	"show_encoding": true,
-	"show_full_path": false,
-	"show_line_endings": true,
-	"soda_rect_scrollbars": true,
-	"soda_tabs_autowidth": true,
-	"tab_size": 4,
-	"theme": "SoDaReloaded Light.sublime-theme",
-	"translate_tabs_to_spaces": false,
-	"trim_trailing_white_space_on_save": false,
-	"update_check": false,
-	"word_wrap": true
+  "added_words": [
+    "xuergou"
+  ],
+  "bold_folder_labels": true,
+  "caret_style": "phase",
+  "close_windows_when_empty": false,
+  "color_scheme": "Packages/User/Kuroir Theme.tmTheme",
+  "default_line_ending": "unix",
+  "draw_minimap_border": true,
+  "draw_white_space": "all",
+  "ensure_newline_at_eof_on_save": true,
+  "fade_fold_buttons": false,
+  "findreplace_small": true,
+  "font_options": [
+    "no bold",
+    "no_italic"
+  ],
+  "font_size": 15,
+  "highlight_line": true,
+  "highlight_modified_tabs": true,
+  "hot_exit": false,
+  "ignored_packages": [
+    "Vintage"
+  ],
+  "indent_guide_options": [
+    "draw_normal",
+    "draw_active"
+  ],
+  "line_numbers": true,
+  "line_padding_bottom": 9,
+  "line_padding_top": 9,
+  "margin": 0,
+  "overlay_scroll_bars": "enabled",
+  "preview_on_click": false,
+  "remember_open_files": false,
+  "rulers": [
+    80,
+    100
+  ],
+  "show_definitions": false,
+  "show_encoding": true,
+  "show_full_path": true,
+  "show_line_endings": true,
+  "show_panel_on_build": false,
+  "soda_rect_scrollbars": true,
+  "soda_tabs_autowidth": true,
+  "tab_size": 4,
+  "tabs_small": false,
+  "theme": "SoDaReloaded Light.sublime-theme",
+  "translate_tabs_to_spaces": true,
+  "trim_trailing_white_space_on_save": false,
+  "update_check": false,
+  "word_wrap": true
 }
 ```
 
