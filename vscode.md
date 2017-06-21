@@ -38,3 +38,43 @@ command + shift + p -> 输入: shell Command: Install
 3. Path Intellisense
 4. Debugger for Chrome
 5. Bookmarks
+
+
+## setting.json
+```json
+{
+    "window.zoomLevel": -1,
+    "window.openFilesInNewWindow": "off",
+    "files.autoSave": "off",
+
+    "editor.fontSize": 14,
+    "editor.lineNumbers": "on",
+    "editor.lineHeight": 28,
+    "editor.rulers": [80, 120],
+    "editor.mouseWheelZoom": true,
+    
+    // php
+    "php.validate.enable": true,
+    "php.validate.executablePath": "/usr/local/opt/php71/bin/php",
+    "php.validate.run": "onType",
+    "php.suggest.basic": true,
+
+    // explorer
+    "explorer.openEditors.visible": 0,
+
+    "workbench.welcome.enabled": false,
+    "workbench.activityBar.visible": false,
+    "workbench.iconTheme": "vscode-icons",
+
+    "files.exclude": {
+        "**/.idea": true,
+        "**/.vscode": true,
+        "**/node_modules": true,
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true
+    }
+}
+```
