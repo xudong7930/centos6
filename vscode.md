@@ -62,9 +62,20 @@ command + shift + p -> 输入: shell Command: Install
     // explorer
     "explorer.openEditors.visible": 0,
 
+    // workbench
     "workbench.welcome.enabled": false,
     "workbench.activityBar.visible": false,
     "workbench.iconTheme": "vscode-icons",
+    "workbench.statusBar.visible": false,
+    "workbench.sideBar.location": "right",
+
+    // terminal
+    "terminal.integrated.shell.windows": "D:/Tools/git/bin/bash.exe",
+    "terminal.integrated.fontFamily": "Consolas, 'Microsoft YaHei UI', 'Courier New'",
+    "terminal.integrated.fontSize": 16,
+    "terminal.integrated.lineHeight": 2.0,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.cursorStyle": "line"
 
     "files.exclude": {
         "**/.idea": true,
