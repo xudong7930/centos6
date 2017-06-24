@@ -147,7 +147,11 @@ import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d
   "translate_tabs_to_spaces": true,
   "trim_trailing_white_space_on_save": false,
   "update_check": false,
-  "word_wrap": true
+  "word_wrap": true,
+
+  // not included folders.
+  "folder_exclude_patterns": [".svn", ".git", ".hg", "CVS", "node_module", ".idea", ".vscode"],
+  "file_exclude_patterns": ["*.pyc", "*.pyo", "*.exe", "*.dll", "*.obj","*.o", "*.a", "*.lib", "*.so", "*.dylib", "*.ncb", "*.sdf", "*.suo", "*.pdb", "*.idb", ".DS_Store", "*.class", "*.psd", "*.db", "*.sublime-workspace"]
 }
 ```
 
