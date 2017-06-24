@@ -1,6 +1,9 @@
 sublime的日常使用
 ================
 
+## 8. 新建code snnipes
+
+
 ## 7. Package Console
 ```python
 import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
@@ -10,32 +13,30 @@ import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d
 > "font_face": "Consolas Bold"  
 > "font_face": "Comic Sans MS"  
 
-## 5. PHP代码检查
-> cd C:\Users\xd\AppData\Roaming\Sublime Text 3\Packages
-
-> git clone https://github.com/SublimeLinter/SublimeLinter3.git SublimeLinter
-
-> 重启sublime
+## 5. PHP开发配置
+安装如下插件:
+1. SublimeLinter
+2. SublimeLinter-php
+3. SublimeLinter-phpcs
+4. PHP Companion
 
 插件配置
 ```json
 {
-    "user": {
-        "debug": true,
+    "default": {
+        "debug": false,
         "delay": 0.25,
         "error_color": "D02000",
         "gutter_theme": "Packages/SublimeLinter/gutter-themes/Default/Default.gutter-theme",
         "gutter_theme_excludes": [],
-        "lint_mode": "save only",
+        "lint_mode": "background",
         "mark_style": "outline",
         "no_column_highlights_line": false,
         "passive_warnings": false,
         "paths": {
             "linux": [],
             "osx": [],
-            "windows": [
-                "D:\\Tools\\php56\\php.exe"
-            ]
+            "windows": []
         },
         "python_paths": {
             "linux": [],
@@ -56,10 +57,28 @@ import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d
             "javascript (babel)": "javascript",
             "php": "html"
         },
+        "tooltip_fontsize": "1rem",
+        "tooltip_theme": "Packages/SublimeLinter/tooltip-themes/Default/Default.tooltip-theme",
+        "tooltip_theme_excludes": [],
+        "tooltips": false,
         "warning_color": "DDB700",
         "wrap_find": true
     }
 }
+```
+
+快捷键配置:
+```json
+[
+    {"keys": ["f1"],"command": "toggle_side_bar"},
+    { "keys": ["f6"], "command": "expand_fqcn" },
+    { "keys": ["shift+f6"], "command": "expand_fqcn", "args": {"leading_separator": true} },
+    { "keys": ["f5"], "command": "find_use" },
+    { "keys": ["f4"], "command": "import_namespace" },
+    { "keys": ["f3"], "command": "implement" },
+    { "keys": ["shift+f12"], "command": "goto_definition_scope" },
+    { "keys": ["f7"], "command": "insert_php_constructor_property" }
+]
 ```
 
 
@@ -67,7 +86,7 @@ import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d
 新建**C:\Users\xd\AppData\Roaming\Sublime Text 3\Packages\User\PHP.sublime-build**文件
 ```json
 {
-    "cmd": ["D:\\Tools\\php56\\php.exe", "$file"],
+    "cmd": ["D:\\Tools\\php\\php.exe", "$file"],
     "file_regex": "php$",
     "selector": "source.php"
 }
