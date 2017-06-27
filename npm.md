@@ -28,5 +28,5 @@
 
 
 ## 全局包
-npm -g i vue-cli webpack
-npm init -y 生成package.json文件
+* npm -g i vue-cli webpack  
+* npm init -y 生成package.json文件
