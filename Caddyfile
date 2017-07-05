@@ -1,0 +1,182 @@
+# site: ehd4.f3322.net
+ehd4.f3322.net {
+    # define root path
+    root /usr/local/caddy/ehd4.f3322.net
+
+    # Enable gzip compression
+    gzip
+
+    # index file
+    index index.html index.htm index.php index.php5
+
+    # auth
+    basicauth "xudong7930" "abc123" {
+        realm "xuergou's jav"
+        /jav
+        /jav/hi.html
+    }
+
+    # bind: 允许指定的地址访问
+    bind 0.0.0.0
+
+    # browse: 文件浏览
+    # browse  # 所有的目录允许列出文件
+    # browse /jav # 指定的目录允许列出文件
+    browse
+
+    # errors: 错误日志
+    errors /usr/local/caddy/log/ehd4.error.log {
+        404 404.html # Not Found
+        500 500.html # Internal Server Error
+        *   error.html
+
+        rotate_size 50  # Rotate after 50 MB
+        rotate_age  90  # Keep rotated files for 90 days
+        rotate_keep 20  # Keep at most 20 log files
+        rotate_compress true # Compress rotated log files in gzip format
+    }
+
+    # expvar
+    expvar
+
+    # ext: Suppose you have a file called /contact.html. You could serve that file at /contact by having Caddy try .html files.
+    ext .html .htm .txt
+
+    # fastcgi
+    fastcgi / 127.0.0.1:9000 php {
+        root /var/www/html
+        pool 0
+        connect_timeout 15s
+        read_timeout 12s
+        send_timeout 12s
+    }
+
+    # header 
+    header / {
+        X-Custom-Header 2300
+        # Enable HTTP Strict Transport Security (HSTS) to force clients to always connect via HTTPS (do not use if only testing)
+        Strict-Transport-Security "max-age=31536000;"
+
+        # Enable cross-site filter (XSS) and tell browser to block detected attacks
+        X-XSS-Protection "1; mode=block"
+
+        # Prevent some browsers from MIME-sniffing a response away from the declared Content-Type
+        X-Content-Type-Options "nosniff"
+
+        # Disallow the site to be rendered within a frame (clickjacking protection)
+        X-Frame-Options "DENY"
+    }
+
+    ## 指定的目录才有特定的字段
+    header /api {
+        Access-Control-Allow-Origin  *
+        Access-Control-Allow-Methods "GET, POST, OPTIONS"
+        -Server
+    }
+
+    # internal 内部路径, 外部不能访问
+    internal /hehe
+
+    # limits
+    limits {
+        header 100KB
+        body / 20MB
+    }
+
+    # log file
+    log /usr/local/caddy/log/ehd4.access.log {
+        rotate_size 50  # Rotate after 50 MB
+        rotate_age  90  # Keep rotated files for 90 days
+        rotate_keep 20  # Keep at most 20 log files
+        rotate_compress true # Compress rotated log files in gzip format
+    }
+
+    # markdown解析
+    markdown / {
+        ext .md
+        css /markdown.css
+    }
+
+    # mime类型
+    mime {
+        .swf application/x-shockwave-flash
+        .pdf applicaiton/pdf
+    }
+
+    # Enable pprof endpoint: https://ehd4.f3322.net/debug/pprof/
+    pprof
+
+    # proxy 代理设置
+    # proxy /moreapi web1.local:80
+    proxy /moreapi web1.local:80 web2.local:80 web3.local:80 {
+        # 转发策略: random, least_con, round_robin, first, ip_hash, uri_hash
+        policy random
+
+        # 0s: meaning that failed requests will not be remembered and the backend will always be considered available
+        fail_timeout 0s
+
+        # only enabled when fail_timeout > 0
+        max_fails 1
+
+        # 最大请求数
+        max_conns 20000
+
+        # only used if a request to the initially-selected upstream host fails.
+        try_duration 0s
+
+        # after request fail then wait 10s to do the next request
+        try_interval 10s
+
+        # health check
+        health_check  /healthcheck
+        health_check_port 80
+        health_check_interval 60s
+        health_check_timeout 15s
+
+        # 代理服务器转发到后端服务器时header中添加的字段
+        header_upstream Host {host}
+
+        # 代理服务器响应给客户端的header中添加的字段
+        header_downstream
+
+        keepalive 60
+
+        # A request to /api/foo without /api, for example, will result in a proxy request to /foo
+        without "/api"
+
+        except /static /robots.txt
+
+        # insecure_skip_verify true
+
+        # proxy的预设配置
+        # preset websocket
+        # preset transparent
+    }
+
+    # push 服务器端推送
+    push /index.html {
+        method get
+        header x-needres true
+        /assets/js/app.js
+        /assets/css/style.css
+    }
+
+    # 重定向
+    redir 301 {
+        if {>X-Forwarded-Proto} is http
+        /foo /info/foo
+        /api-dev /api       meta
+    }
+
+    # timeouts 超时
+    timeouts 10s
+    timeouts {
+        read 10s
+        header 10s
+        write 10s
+        #idel 10s
+    }
+}
+
+# import: 导入其他的配置
+import /usr/local/caddy/vhost/*.conf
