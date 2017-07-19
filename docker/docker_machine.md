@@ -23,7 +23,7 @@ Create and manage machines running Docker.
 
 ## 创建machine
 * docker-machine create -d driver_name machine_name "使用boot2docker.iso创建"
-* docker_machine create -d generic mywebapp --generic-ip-address=203.0.113.81 --generic-ssh-key ~/.ssh/id_rsa --generic-ssh-user=root --generic-ssh-port=30011 "使用现有的主机创建"
+* docker_machine create -d generic --generic-ip-address=203.0.113.81 --generic-ssh-key ~/.ssh/id_rsa --generic-ssh-user=root --generic-ssh-port=30011 mywebapp "使用现有的主机创建"
 
 [支持的驱动](https://docs.docker.com/machine/drivers/):
 
