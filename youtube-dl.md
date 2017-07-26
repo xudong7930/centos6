@@ -23,3 +23,15 @@ youtube-dl -ciw --no-playlist -o "%(title)s-%(id)s.%(ext)s" --simulate -a ./down
 
 youtube-dl -ciwq --no-playlist -o "%(title)s-%(id)s.%(ext)s" -a ./down.txt
 ```
+
+## youtube.com取得下载链接
+在播放页面注入jquery:
+
+```javascript
+document.getElementsByTagName('head')[0].appendChild(document.createElement('script')).setAttribute('src','https://code.jquery.com/jquery-1.9.1.min.js');
+```
+
+取得播放地址:
+```javascript
+$(".yt-uix-scroller-scroll-unit a").each(function(index, item){console.log(item.href);});
+```

@@ -67,14 +67,14 @@ systemctl restart docker.service
 > docker run -it ubuntu:14.04 /bin/bash "在容器里运行ubuntu,并进入bash, -it是交互"  
 > docekr run -d ubuntu "后台运行容器"  
 > docker start|stop|restart 容器名称  
-> docker stop $(docker ps -a -q) "停止所有的容器"  
+> docker stop $(docker ps -a -q)"停止所有的容器"  
 > docker exec -it container_name /bin/bash "进入容器中操作"  
 > docker export conatainer_id | gzip > ubuntu.tar.gz "导出容器"  
 > cat ubuntu.tar.gz | docker import - xudong7930/ubuntu:v2 "导入容器"  
 > docker import http://domain.com/ubuntu.tar.gz xudong7930/ubuntu:v2  
 > docker rm conatainer_id "删除容器"  
 > docker rm -f conatainer_id "强制删除容器"  
-> docker rm $(docker ps -a -q) "清理所有容器"
+> docker rm $(docker ps -a -q)"清理所有容器"
 > docker rename old_container_name new_container_name "容器重命名"
 
 
@@ -111,6 +111,7 @@ systemctl restart docker.service
 * docker info "查看docker的统计信息"
 * docker top container_name "查看指定容器运行的进程"
 * docker tag source_image:tag target_image:tag "创建一个指向source_image的新的tag"
+* docker push xudong7930/hellonginx "将本地镜像推送到Docker Hub"
 * docker stats "显示活动容器的资源占用状态"
 * docker port container_name "显示指定容器的端口映射"
 * docker create --name xuergou_nginx nginx:lastest "创建一个容器,有很多的参数,没加上"
