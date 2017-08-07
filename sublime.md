@@ -97,6 +97,8 @@ import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d
 {
   "added_words": [
     "xuergou"
+    "color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+    "theme": "One Dark.sublime-theme",
   ],
   "bold_folder_labels": true,
   "caret_style": "phase",
