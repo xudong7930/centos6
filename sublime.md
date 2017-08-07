@@ -70,14 +70,14 @@ import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d
 快捷键配置:
 ```json
 [
-    {"keys": ["f1"],"command": "toggle_side_bar"},
-    { "keys": ["f6"], "command": "expand_fqcn" },
-    { "keys": ["shift+f6"], "command": "expand_fqcn", "args": {"leading_separator": true} },
-    { "keys": ["f5"], "command": "find_use" },
-    { "keys": ["f4"], "command": "import_namespace" },
-    { "keys": ["f3"], "command": "implement" },
-    { "keys": ["shift+f12"], "command": "goto_definition_scope" },
-    { "keys": ["f7"], "command": "insert_php_constructor_property" }
+    { "keys": ["ctrl+1"], "command": "toggle_side_bar" }, 
+    { "keys": ["ctrl+2"], "command": "expand_fqcn" },
+    { "keys": ["ctrl+3"], "command": "expand_fqcn", "args": {"leading_separator": true} },
+    { "keys": ["ctrl+4"], "command": "find_use" },
+    { "keys": ["ctrl+5"], "command": "import_namespace" },
+    { "keys": ["ctrl+6"], "command": "implement" },
+    { "keys": ["ctrl+7"], "command": "goto_definition_scope" },
+    { "keys": ["ctrl+8"], "command": "insert_php_constructor_property" }
 ]
 ```
 
