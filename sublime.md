@@ -112,7 +112,8 @@ import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d
   "findreplace_small": true,
   "font_options": [
     "no bold",
-    "no_italic"
+    "no_italic",
+    "gray_antialias"
   ],
   "font_size": 15,
   "highlight_line": true,
