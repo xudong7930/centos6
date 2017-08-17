@@ -59,6 +59,12 @@ Nginx使用免费的SSL
 	server {
 	  	listen 443;
 	  	server_name yoursite.com www.yoursite.com;
+		
+		# 启用HSTS
+		add_header Strict-Transport-Security "max-age=300; includeSubdomains; preload";
+
+		# 确保不会嵌入到frame 或 iframe
+		add_header X-Frame-Options "DENY";
 
 	  	ssl on;
 	  	ssl_certificate /path/to/chained.pem;
