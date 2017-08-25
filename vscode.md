@@ -15,7 +15,7 @@ command + shift + p -> 输入: shell Command: Install
 > command + shift + f 文件搜索  
 > f1 设置  
 > command + j 显示命令行  
-
+> command + delete 删除文件
 ## 文件编辑
 
 > command + → 跳到行尾  
