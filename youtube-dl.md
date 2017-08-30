@@ -34,4 +34,6 @@ document.getElementsByTagName('head')[0].appendChild(document.createElement('scr
 取得播放地址:
 ```javascript
 $(".yt-uix-scroller-scroll-unit a").each(function(index, item){console.log(item.href);});
+
+$("ytd-playlist-panel-video-renderer a").each(function(index, item){console.log(item.href);});
 ```
