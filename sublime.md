@@ -53,7 +53,6 @@ import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d
 安装如下插件:
 1. SublimeLinter
 2. SublimeLinter-php
-3. SublimeLinter-phpcs
 4. PHP Companion
 5. PHP Setter And Getter
 6. Docblr

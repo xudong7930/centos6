@@ -33,7 +33,19 @@ document.getElementsByTagName('head')[0].appendChild(document.createElement('scr
 
 取得播放地址:
 ```javascript
-$(".yt-uix-scroller-scroll-unit a").each(function(index, item){console.log(item.href);});
+// for new youtube
+$("ytd-playlist-panel-video-renderer a").each(function(index, item){
+    var next = index + 1;
+    var prefix = 'youtube-dl -ciw --no-playlist -o "'+next+'_%(title)s-%(id)s.%(ext)s" ';
+    var url = item.href;
+    console.info(prefix+url);
+});
 
-$("ytd-playlist-panel-video-renderer a").each(function(index, item){console.log(item.href);});
+// for laracast.com
+$('.episode-list .episode-list-item').each(function(index, item){
+    var title = $(item).find('.episode-list-title').find('a').text().replace(/(^\s*)|(\s*$)/g,'').replace(/\s/g, '-');
+    var next = index + 1;
+    var prefix = "wget -O " + next + "_";
+    console.info(prefix+title+".mp4");
+})
 ```
