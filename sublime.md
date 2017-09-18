@@ -64,6 +64,8 @@ import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d
 12. Theme - One Dark
 13. SimplePHPUnit
 14. Laravel 5 Artisan
+15. [sublime-phpunit](https://github.com/adamwathan/sublime-phpunit)
+
 
 插件配置
 ```json
