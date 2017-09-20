@@ -75,4 +75,10 @@ set softtabstop=4
 set shiftwidth=4
 set shiftround
 
+"================快捷键映射==================="
+let mapleader="\<Space>" "设置使用空格键作为热键"
+nnoremap <Leader>w :w<cr> "保存文件快捷键"
+nnoremap <CR> G "按enter跳转到文件末尾"
+nnoremap <BS> gg "按backspace跳转到文件开始"
+
 ```
