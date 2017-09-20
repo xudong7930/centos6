@@ -1,57 +1,76 @@
-vim
-===
+vim editor
+==========
 
+
+## 快捷操作
+正常模式:
+i "在当前字符左边处插入"
+a "在当前字符右边处插入"
+
+shift+a "在当前行尾插入"
+shift+i "在当前行首插入"
+
+o "在当前行下面插入"
+shift+o "在当前行下面插入"
+
+shift+6 "行首"
+shift+4 "行尾"
+
+shift+g "文件末尾"
+gg "文件头部"
+10gg "文件第10行"
+
+dd "删除光标所在当前行"
+yy "复制光标所在当前行"
+p "粘贴内容"
+
+:s/Fira Code/Fira_Code/g "当前行全部替换"
+:%s/Fira Code/Fira_Code/g "全文替换"
 
 
 ## ~/.vimrc
 ```
-"6.其它设置"
-syntax on "语法高亮"
-set wildmenu "按TAB键时命令行自动补齐"
-set nonumber "显示行号"
-set ignorecase "忽略大小写"
-set ruler "显示当前光标位置"
-set autoread "文件在Vim之外修改过，自动重新读入"
-set autowrite "设置自动保存内容"
-set nocp "使用vim而非vi"
-set cursorline "高亮当前行"
-filetype on "启动文件类型检查"
+set nocompatible "不兼容vi一致性模式"
+colorscheme desert "编辑器颜色主题"
+syntax on "代码语法高亮"
+filetype on "检查文件类型"
 filetype plugin on "运行vim加载文件类型插件"
-set helplang=cn "显示中文帮助语言"
-set showcmd "显示命令"
-set paste "粘贴模式"
-
-"5.设置缩进"
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set smartindent
-set smarttab
-set cindent "c/c++自动缩进"
-set autoindent "参考上一行的缩进方式进行自动缩进"
 filetype indent on "根据文件类型进行缩进"
 
+set number "显示行号"
+set guifont=Fira_Code:h14 "字体,字体行高"
+set backspace=indent,eol,start "退格键有效"
+set encoding=utf-8 "内容编码"
+set fileencoding=utf-8 "文件编码"
+set autoindent "自动缩进"
+set smartindent "智能缩进"
+set showmatch "括号自动补齐"
+set showmode "显示当前操作模式"
+set showcmd "输入的命令显示出来"
+set ignorecase smartcase "搜索时忽略大小写"
+set hlsearch "搜索时高亮显示被找到的文本"
+set incsearch "输入搜索内容就高亮显示搜索结果"
+set nowrap "不自动换行"
+set ruler "状态栏标尺"
+set nobackup "覆盖文件时不备份"
+set noswapfile "不需要交换文件"
+set nowritebackup "保存时不写入备份文件"
+set autoread "自动检测文件更改"
+set autowrite "自动写入"
+set foldenable "允许折叠"
+set laststatus=2 "启动状态栏显示"
+set linespace=16 "设置行高"
+set nocp "使用vim而非vi"
+set paste "粘贴模式"
+set cindent "c/c++自动缩进"
 
-"4.搜索设置"
-set hlsearch "开启搜索结果的高亮显示"
-set incsearch "边输入边搜索"
 
-"3. 查找和替换文本"
-nmap ;s :%s/\<<C-R>=expand("<cword>")<CR>\>/
-nmap ;g :vimgrep <C-R>=expand("<cword>")<CR>
+"======设置tab======="
+set tabstop=4
+set smarttab
+set expandtab
+set softtabstop=4
+set shiftwidth=4
+set shiftround
 
-
-"2.不要交换文件和备份文件,减少冲突"
-set nobackup
-set noswapfile
-set nowritebackup
-
-"1.设置文件编码，解决中文乱码问题"
-set encoding=utf-8
-set termencoding=utf-8
-if has("multi_byte")
-	set fileencodings=utf-8,ucs-bom,cp936,cp1250,big5,euc-jp,euc-kr,latin1
-else
-	echoerr "Sorry, this version of (g)vim was not compiled with multi_byte"
-endif
 ```
