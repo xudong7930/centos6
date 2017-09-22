@@ -65,7 +65,7 @@ set linespace=16 "设置行高"
 set nocp "使用vim而非vi"
 set paste "粘贴模式"
 set cindent "c/c++自动缩进"
-
+set noeb vb t_vb= "关闭响铃"
 
 "======设置tab======="
 set tabstop=4
