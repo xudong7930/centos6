@@ -1,31 +1,31 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
+# oh-my-zsh安装路径.
 export ZSH=/Users/xudong7930/.oh-my-zsh
 
-# zsh theme: robbyrussell | af-magic | steeef | ys | jonathan | Candy | cloud
+# 主题设置: robbyrussell, af-magic, steeef, ys, jonathan, Candy, cloud
 ZSH_THEME="ys"
 
-# case sensitive
-# CASE_SENSITIVE="true"
+# 区分大小写: true,false
+CASE_SENSITIVE="false"
 
 # Uncomment the following line to use hyphen-insensitive completion. Casesensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
+# 禁用自动更新.
 # DISABLE_AUTO_UPDATE="true"
 
-# Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=7
+# 自动更新检查天数.
+export UPDATE_ZSH_DAYS=30
 
-# Uncomment the following line to disable colors in ls.
+# 禁用ls命令显示颜色.
 # DISABLE_LS_COLORS="true"
 
-# Uncomment the following line to disable auto-setting terminal title.
+# 禁用自动设置终端标题.
 # DISABLE_AUTO_TITLE="true"
 
-# Uncomment the following line to enable command auto-correction.
+# 启动命令自动纠正.
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
@@ -39,7 +39,7 @@ export UPDATE_ZSH_DAYS=7
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -56,7 +56,7 @@ source $ZSH/oh-my-zsh.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# You may need to manually set your language environment
+# 设置终端编码环境
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
@@ -72,44 +72,67 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+# 禁用更新的弹出提示
 DISABLE_UPDATE_PROMPT=true
+
+# 禁用自动更新
 DISABLE_AUTO_UPDATE=true
 
+# 别名设置
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# osx
 alias grep="grep --color=auto"
+alias show_ip="curl -s http://ip.cn"
+alias clear_trash="sudo rm -fr ~/.Trash/*"
+alias mk_pass='LC_ALL=C tr -dc "[:alpha:][:alnum:]" < /dev/urandom | head -c 20'
+alias show_hide='defaults write com.apple.finder AppleShowAllFiles true'
+alias show_nohide='defaults write com.apple.finder AppleShowAllFiles false'
 
-# Laravel
+# Laravel & Composer
+alias phpser="php -S 0.0.0.0:80"
 alias ss="php -S 0.0.0.0:8100"
 alias pa="php artisan"
 alias pat="php artisan tinker"
 alias pas="php artisan serve --host=0.0.0.0 --port=8000"
-alias pa_clear="composer dumpautoload; composer clearcache; php artisan view:clear;php artisan route:clear; php artisan cache:clear; php artisan clear-compiled"
+alias pa_clear="composer dumpautoload;php artisan view:clear;php artisan route:clear; php artisan cache:clear; php artisan clear-compiled"
+alias laravel55="composer create-project --prefer-dist laravel/laravel=5.5.*"
+alias laravel54="composer create-project --prefer-dist laravel/laravel=5.4.*"
+alias laravel53="composer create-project --prefer-dist laravel/laravel=5.3.*"
+alias laravel53="composer create-project --prefer-dist laravel/laravel=5.2.*"
+alias laravel51="composer create-project --prefer-dist laravel/laravel=5.1.*"
+alias cmp="composer"
+alias cmp_update="composer selfupdate"
+alias cmp_dump="composer dumpautoload"
+alias cmp_clear="composer clearcache"
 
-# NPM
+
+# node & npm
+alias node="node --harmony"
 alias nrd="npm run dev"
+alias nrp="npm run prd"
 alias nrb="npm run build"
-alias ni="npm i -D"
+alias nrw="npm run watch"
+alias nid="npm i --save-dev"
+alias nis="npm i --save"
+alias niy="npm init -y"
 
-# SVN
+# subversion
 alias svnout="svn checkout"
 alias svnup="svn update"
 alias svncm="svn commit"
 
 # SSH
-alias go_vultr="ssh -p 30011 -o "ServerAliveInterval=60" root@45.32.77.118 -i ~/.ssh2/id_rsa"
-alias go_mallmg="ssh -p 30022 -o "ServerAliveInterval=60" root@www.mallmg.com -i ~/.ssh2/id_rsa"
+alias sshkey="cat ~/.ssh2/id_rsa.pub | pbcopy && echo 'ssh key copyed to clipboard!'"
+alias laravelos="ssh laravel-vqta@deploy.us1.frbit.com -i ~/.ssh2/id_rsa"
+alias vultros="ssh -p 30011 -o "ServerAliveInterval=60" root@45.32.77.118 -i ~/.ssh2/id_rsa"
 
-alias go_zq_219="ssh -p 30022 -o "ServerAliveInterval=60" root@10.12.40.219 -i ~/.ssh2/id_rsa"
-alias go_zq_129="ssh -p 30022 -o "ServerAliveInterval=60" root@10.12.40.129 -i ~/.ssh2/id_rsa"
-alias go_zq_35="ssh -p 30022 -o "ServerAliveInterval=60" root@10.12.40.35 -i ~/.ssh2/id_rsa"
+alias zq_219="ssh -p 30022 -o "ServerAliveInterval=60" root@10.12.40.219 -i ~/.ssh2/id_rsa"
+alias zq_129="ssh -p 30022 -o "ServerAliveInterval=60" root@10.12.40.129 -i ~/.ssh2/id_rsa"
+alias zq_35="ssh -p 30022 -o "ServerAliveInterval=60" root@10.12.40.35 -i ~/.ssh2/id_rsa"
 
 alias go_bj_4="ssh -p 30022 -o "ServerAliveInterval=60" root@172.20.4.4 -i ~/.ssh2/id_rsa"
 alias go_bj_30="ssh -p 30022 -o "ServerAliveInterval=60" root@172.20.4.30 -i ~/.ssh2/id_rsa"
@@ -125,32 +148,26 @@ alias go_gz_86="ssh -p 30022 -o "ServerAliveInterval=60" root@10.2.61.86 -i ~/.s
 alias go_gz_87="ssh -p 30022 -o "ServerAliveInterval=60" root@10.2.61.87 -i ~/.ssh2/id_rsa"
 alias go_gz_88="ssh -p 30022 -o "ServerAliveInterval=60" root@10.2.61.88 -i ~/.ssh2/id_rsa"
 
-alias op_zshrc="subl ~/.zshrc"
-alias op_hosts="subl /etc/hosts"
-alias op_hiphp="subl ~/Public/Xudong/hi.php"
-alias op_phpini="subl /usr/local/etc/php/7.1/php.ini"
+alias zshrc="subl ~/.zshrc"
+alias vimrc="subl ~/.vimrc"
+alias hosts="subl /etc/hosts"
+alias gitconfig="subl ~/.gitconfig"
+alias hiphp="subl ~/Public/Xudong/hi.php"
+alias phpini="subl /usr/local/etc/php/7.1/php.ini"
 alias go_desktop="cd ~/Desktop"
+alias go_xudong="cd ~/Public/Xudong"
 
-alias mk_pass='LC_ALL=C tr -dc "[:alpha:][:alnum:]" < /dev/urandom | head -c 20'
-alias show_hide='defaults write com.apple.finder AppleShowAllFiles true'
-alias show_nohide='defaults write com.apple.finder AppleShowAllFiles false'
+# git
+alias gs="git status"
+alias nah="git reset --hard && git clean -df"
+alias gll="git log --oneline --graph"
 
-# mysql
-alias mqstart="/Applications/MAMP/bin/startMysql.sh"
-alias mqstop="/Applications/MAMP/bin/stopMysql.sh"
-alias node="node --harmony"
-
-# docker
-alias dk="docker"
-alias dk_ver="docker version"
-alias dk_ps="docker ps"
-alias dk_psa="docker ps -a"
-alias dk_psl="docker ps -l"
-
-# multiple
-alias show_ip="curl -s http://ip.cn" # 显示上网出口
-alias clear_trash="sudo rm -fr ~/.Trash/*" # 清空回收站
-
-export PATH="/Users/xudong7930/.composer/vendor/bin:$PATH"
+# composer & brew & path
+export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+
+# node version manager.
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
