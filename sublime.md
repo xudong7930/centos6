@@ -3,6 +3,7 @@ sublime的日常使用
 
 
 ## 9. 默认快捷键
+* option+shift+↑|↓  "向上向下选中行"
 * "put cursor on word" -> ctrl+super+g "all word select"
 * "put cursor on word" -> super+d  "multiper word select"
 * alt+super+2 "two colums"
