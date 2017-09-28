@@ -44,11 +44,12 @@ HIST_STAMPS="yyyy-mm-dd"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# zsh插件
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git laravel5 xcode yarn)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -86,29 +87,41 @@ DISABLE_AUTO_UPDATE=true
 
 # osx
 alias grep="grep --color=auto"
-alias show_ip="curl -s http://ip.cn"
+alias ip="curl -s http://ip.cn"
 alias clear_trash="sudo rm -fr ~/.Trash/*"
 alias mk_pass='LC_ALL=C tr -dc "[:alpha:][:alnum:]" < /dev/urandom | head -c 20'
 alias show_hide='defaults write com.apple.finder AppleShowAllFiles true'
 alias show_nohide='defaults write com.apple.finder AppleShowAllFiles false'
+alias cls="clear"
 
 # Laravel & Composer
 alias phpser="php -S 0.0.0.0:80"
 alias ss="php -S 0.0.0.0:8100"
-alias pa="php artisan"
-alias pat="php artisan tinker"
-alias pas="php artisan serve --host=0.0.0.0 --port=8000"
 alias pa_clear="composer dumpautoload;php artisan view:clear;php artisan route:clear; php artisan cache:clear; php artisan clear-compiled"
 alias laravel55="composer create-project --prefer-dist laravel/laravel=5.5.*"
 alias laravel54="composer create-project --prefer-dist laravel/laravel=5.4.*"
 alias laravel53="composer create-project --prefer-dist laravel/laravel=5.3.*"
-alias laravel53="composer create-project --prefer-dist laravel/laravel=5.2.*"
+alias laravel52="composer create-project --prefer-dist laravel/laravel=5.2.*"
 alias laravel51="composer create-project --prefer-dist laravel/laravel=5.1.*"
 alias cmp="composer"
 alias cmp_update="composer selfupdate"
 alias cmp_dump="composer dumpautoload"
 alias cmp_clear="composer clearcache"
 
+alias mk_sqlite="touch ./database/database.sqlite"
+alias pa="php artisan"
+alias pat="php artisan tinker"
+alias tinker="php artisan tinker"
+alias pas="php artisan serve --host=0.0.0.0 --port=8000"
+alias pam="php artisan migrate";
+alias paeg="php artisan event:generate"
+alias pavp="php artisan vendor:publish"
+alias pa_route="php artisan route:list"
+alias mk_controller="php artisan make:controller"
+alias mk_model="php artisan make:model"
+alias mk_middleware="php artisan make:middleware"
+alias mk_mail="php artisan make:mail"
+alias mk_notification="php artisan make:notification"
 
 # node & npm
 alias node="node --harmony"
@@ -119,6 +132,9 @@ alias nrw="npm run watch"
 alias nid="npm i --save-dev"
 alias nis="npm i --save"
 alias niy="npm init -y"
+alias npm_list="npm list --depth=0"
+alias npm_glist="npm list --depth=0 -g"
+alias npm_clear="npm cache clean"
 
 # subversion
 alias svnout="svn checkout"
