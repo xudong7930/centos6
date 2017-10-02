@@ -1,0 +1,67 @@
+version: '3' # 指定版本
+    
+services:
+    webapp: # 创建一个叫webapp的服务
+        image: "nginx" # 
+        #build: .  # 指定Dockerfile所在的文件夹路径,绝对路径, 和image二选一
+        ports: # 端口映射
+            - "80:80"
+        expose: # 指定要暴露的端口,不映射到主机上.
+            - "80"
+            - "22"
+        volumes: # 卷挂载
+            - "/data" 
+        volumes_from: # 从另一个容器或服务挂载数据卷
+            - service_name
+            - container_name
+        cap_add: # 容器的内核能力分配 
+            - ALL
+        cap_drop: # 去掉指定的内核能力
+            - NET_ADMIN
+        container_name: 
+            - "docker-webapp" # 指定容器的名称,指定后无法扩展
+        command: "" # 覆盖容器启动后默认执行的命令
+        dns: # 自定义DNS服务器
+            - 8.8.8.8
+            - 8.8.4.4
+        dns_search: # DNS搜索域
+            - vultr.com
+        devices: # 设备的映射关系
+            - "/dev/ttyUSB1:/dev/ttyUSB1"
+        #dockerfile: "path/to/Dockerfile" #
+        evn_file: # 从文件中获取
+            - ./app/web.env 
+        environment: # 设置环境变量
+            - TIME_ZONE="Asia/Beijing"
+        extends: # 扩展自那个yml文件, 尽量不适用
+            file: common.yml
+            service: webapp
+        external_links: # 链接到 docker-compose.yml 外部的容器
+            - project_db_1:mysql
+            - project_db_1:postgresql
+        external_hosts: # 添加hosts主机
+            - "google.dns:8.8.8.8"
+        image: # 指定镜像名称或ID, 如果镜像在本地不存在， Compose 将会尝试拉去这个 镜像
+            - ubuntu
+        labels:
+            - com.vultr.desc: "webfweofwe"
+            - com.vultr.release: "1.2.3"
+        links: # 链接到其它服务中的容器, 会添加到/etc/hosts文件中
+            - redis: redis-db
+        log_dirver: # 指定日记类型
+            - "json-file|syslog|none"
+        log_opt: # 日志选项
+            - syslog-address: 'tcp://12.1.1.1:443'
+        net: # 网络模式
+            - "bridge|none|host|container:容器名称"
+        pid: "host" # 跟主机系统共享进程命名空间
+        security_opt: # 指定容器模板标签(label)机制的默认属性(用户、角色、类型、级别等)
+            - label:xuergou:USER
+        ulimits: # 容器的ulimits值
+            npproc: 65535
+            nofile:
+                soft:20000
+                hard:40000
+
+ 
+
