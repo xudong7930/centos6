@@ -1,5 +1,5 @@
-Vultr安装Shadowsocks
-===================
+shadowsocks
+===========
 
 
 ## 1.使用root执行
@@ -17,10 +17,10 @@ chmod +x shadowsocks-go.sh
 ```
 
 ## 3.启动
-- 启动：/etc/init.d/shadowsocks start
-- 停止：/etc/init.d/shadowsocks stop
-- 重启：/etc/init.d/shadowsocks restart
-- 状态：/etc/init.d/shadowsocks status
+- 启动： /etc/init.d/shadowsocks start
+- 停止： /etc/init.d/shadowsocks stop
+- 重启： /etc/init.d/shadowsocks restart
+- 状态： /etc/init.d/shadowsocks status
 
 ## 4.多端口
 ```json

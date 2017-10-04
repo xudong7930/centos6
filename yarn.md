@@ -14,7 +14,3 @@ yarn list "列出安装的包"
 yarn outdated "过期的包"
 yarn info package "查看包信息"
 
-
-
-
-

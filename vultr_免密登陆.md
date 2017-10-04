@@ -14,4 +14,3 @@ vultr免密登陆
 
 ## 3. 登陆测试
 > ssh -p 22 root@vultr -i /c/users/.ssh/id_rda
-
