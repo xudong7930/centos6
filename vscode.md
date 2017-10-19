@@ -58,7 +58,14 @@ command + shift + p -> 输入: shell Command: Install
     "php.validate.executablePath": "/usr/local/opt/php71/bin/php",
     "php.validate.run": "onType",
     "php.suggest.basic": true,
-
+    
+    // emmet
+    "emmet.triggerExpansionOnTab": true,
+    "emmet.includeLanguages": {
+        "vue-html": "html",
+        "vue": "html"
+    },
+    
     // explorer
     "explorer.openEditors.visible": 0,
 
