@@ -89,13 +89,19 @@ DISABLE_AUTO_UPDATE=true
 alias grep="grep --color=auto"
 alias ip="curl -s http://ip.cn"
 alias clear_trash="sudo rm -fr ~/.Trash/*"
+alias clear_log="sudo rm -fr /private/var/log/asl/*.asl /private/var/log/DiagnosticMessages/*.asl /private/var/log/system.log.*.gz /private/var/log/opendirectoryd.log.* /private/var/log/wifi.log.*.bz2 /private/var/log/powermanagement/*.asl"
 alias mk_pass='LC_ALL=C tr -dc "[:alpha:][:alnum:]" < /dev/urandom | head -c 20'
 alias show_hide='defaults write com.apple.finder AppleShowAllFiles true'
 alias show_nohide='defaults write com.apple.finder AppleShowAllFiles false'
 alias cls="clear"
+alias ikill="kill -9"
+alias wgetc="wget -c"
+alias dep="/usr/local/bin/deployer"
 
 # Laravel & Composer
 alias phpser="php -S 0.0.0.0:80"
+alias sqladmin="php -S 0.0.0.0:8200 -t /Users/xudong7930/Public/sqladmin"
+alias sqladmin_stop="ps -a | grep sqladmin | grep -v grep | awk '{print $1}' | xargs  kill -9 "
 alias ss="php -S 0.0.0.0:8100"
 alias pa_clear="composer dumpautoload;php artisan view:clear;php artisan route:clear; php artisan cache:clear; php artisan clear-compiled"
 alias laravel55="composer create-project --prefer-dist laravel/laravel=5.5.*"
@@ -107,6 +113,7 @@ alias cmp="composer"
 alias cmp_update="composer selfupdate"
 alias cmp_dump="composer dumpautoload"
 alias cmp_clear="composer clearcache"
+alias cmp_install="composer require"
 
 alias mk_sqlite="touch ./database/database.sqlite"
 alias pa="php artisan"
@@ -117,11 +124,18 @@ alias pam="php artisan migrate";
 alias paeg="php artisan event:generate"
 alias pavp="php artisan vendor:publish"
 alias pa_route="php artisan route:list"
+
 alias mk_controller="php artisan make:controller"
 alias mk_model="php artisan make:model"
 alias mk_middleware="php artisan make:middleware"
 alias mk_mail="php artisan make:mail"
 alias mk_notification="php artisan make:notification"
+alias mk_migration="php artisan make:migration"
+alias mk_command="php artisan make:command"
+alias mk_seeder="php artisan make:seeder"
+alias mk_job="php artisan make:job"
+alias mk_request="php artisan make:request"
+alias mk_provider="php artisan make:provider"
 
 # node & npm
 alias node="node --harmony"
@@ -135,6 +149,12 @@ alias niy="npm init -y"
 alias npm_list="npm list --depth=0"
 alias npm_glist="npm list --depth=0 -g"
 alias npm_clear="npm cache clean"
+alias npm_gupdate="npm -g update"
+alias npm_info="npm info"
+
+# vue
+alias vue_init="vue init webpack"
+alias vue_simple="vue init webpack-simple"
 
 # subversion
 alias svnout="svn checkout"
@@ -174,9 +194,20 @@ alias go_desktop="cd ~/Desktop"
 alias go_xudong="cd ~/Public/Xudong"
 
 # git
+alias gt="git init"
 alias gs="git status"
 alias nah="git reset --hard && git clean -df"
 alias gll="git log --oneline --graph"
+alias mf_ignore="touch .gitignore"
+
+# homestead
+alias homestead="cd ~/Public/Xudong/Homestead && vagrant"
+
+# deployer
+alias dep_local="deployer deploy develop"
+alias dep_test="deployer deploy test"
+alias dep_ready="deployer deploy ready"
+alias dep_product="deployer deploy product"
 
 # composer & brew & path
 export PATH="$HOME/.composer/vendor/bin:$PATH"
