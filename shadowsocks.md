@@ -35,3 +35,26 @@ chmod +x shadowsocks-go.sh
     "timeout":600
 }
 ```
+
+
+## 自定义user-rule.txt规则
+符号: | 
+功能: 匹配地址开始和结尾
+例子: 
+    |http://example.com 匹配以http://example.com开始的地址
+    example.com| 匹配以example.com结束的地址
+
+符号: ||
+功能: 多地址匹配
+例子: 
+    ||example.com 表示http|https|ftp://example.com等地址都满足条件
+
+符号: !
+功能: 注释
+例子: 
+    !我是注释
+
+符号: @@
+功能: 例外规则
+例子:
+    @@*.example.com 所有满足*.example.com规则的地址不适用代理
