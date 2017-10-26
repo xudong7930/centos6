@@ -98,7 +98,11 @@ alias ikill="kill -9"
 alias wgetc="wget -c"
 alias dep="/usr/local/bin/deployer"
 
-# Laravel & Composer
+# 创建文件
+alias mf_ignore="echo "node_modules\nvendor\n.vscode\n.env\n.git\n.svn\n.idea" > .gitignore"
+alias mf_babelrc='echo { \"presets\": [\"env\"] \} > .babelrc'
+
+# Laravel和Composer
 alias phpser="php -S 0.0.0.0:80"
 alias sqladmin="php -S 0.0.0.0:8200 -t /Users/xudong7930/Public/sqladmin"
 alias sqladmin_stop="ps -a | grep sqladmin | grep -v grep | awk '{print $1}' | xargs  kill -9 "
@@ -151,6 +155,8 @@ alias npm_glist="npm list --depth=0 -g"
 alias npm_clear="npm cache clean"
 alias npm_gupdate="npm -g update"
 alias npm_info="npm info"
+alias npm_webpack="npm i -D babel-loader babel-core babel-preset-env"
+alias npm_babelenv="npm i -D babel-preset-env"
 
 # vue
 alias vue_init="vue init webpack"
@@ -198,7 +204,6 @@ alias gt="git init"
 alias gs="git status"
 alias nah="git reset --hard && git clean -df"
 alias gll="git log --oneline --graph"
-alias mf_ignore="touch .gitignore"
 
 # homestead
 alias homestead="cd ~/Public/Xudong/Homestead && vagrant"
