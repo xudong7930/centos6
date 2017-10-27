@@ -1,6 +1,13 @@
 OSX 命令行
 =========
 
+# 禁止osx自带的apache
+停止:
+> sudo apachectl -k stop
+
+关闭自启:
+> sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
+
 ## 禁止mac睡眠等
 > caffeinate -u -t 7232
 
