@@ -41,6 +41,14 @@ $("ytd-playlist-panel-video-renderer a").each(function(index, item){
     console.info(prefix+url);
 });
 
+# for new youtube playlist
+$("#contents .ytd-playlist-video-renderer > a").each(function(index, item) {
+    let next = index + 1;
+    let prefix = 'youtube-dl -ciw --no-playlist -o "'+next+'_%(title)s-%(id)s.%(ext)s" ';
+    console.info(prefix + item.href);
+});
+
+
 // for laracast.com
 $('.episode-list .episode-list-item').each(function(index, item){
     var title = $(item).find('.episode-list-title').find('a').text().replace(/(^\s*)|(\s*$)/g,'').replace(/\s/g, '-');

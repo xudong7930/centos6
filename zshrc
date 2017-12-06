@@ -13,11 +13,8 @@ CASE_SENSITIVE="false"
 # Uncomment the following line to use hyphen-insensitive completion. Casesensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# 禁用自动更新.
-# DISABLE_AUTO_UPDATE="true"
-
 # 自动更新检查天数.
-export UPDATE_ZSH_DAYS=30
+export UPDATE_ZSH_DAYS=7
 
 # 禁用ls命令显示颜色.
 # DISABLE_LS_COLORS="true"
@@ -74,10 +71,10 @@ source $ZSH/oh-my-zsh.sh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # 禁用更新的弹出提示
-DISABLE_UPDATE_PROMPT=true
+DISABLE_UPDATE_PROMPT=false
 
 # 禁用自动更新
-DISABLE_AUTO_UPDATE=true
+DISABLE_AUTO_UPDATE=false
 
 # 别名设置
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
@@ -85,9 +82,9 @@ DISABLE_AUTO_UPDATE=true
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-# osx
+# 1.OSX
 alias grep="grep --color=auto"
-alias ip="curl -s http://ip.cn"
+alias ip="curl -s http://ip-api.com/json | python -mjson.tool"
 alias clear_trash="sudo rm -fr ~/.Trash/*"
 alias clear_log="sudo rm -fr /private/var/log/asl/*.asl /private/var/log/DiagnosticMessages/*.asl /private/var/log/system.log.*.gz /private/var/log/opendirectoryd.log.* /private/var/log/wifi.log.*.bz2 /private/var/log/powermanagement/*.asl"
 alias mk_pass='LC_ALL=C tr -dc "[:alpha:][:alnum:]" < /dev/urandom | head -c 20'
@@ -97,17 +94,22 @@ alias cls="clear"
 alias ikill="kill -9"
 alias wgetc="wget -c"
 alias dep="/usr/local/bin/deployer"
+alias port="sudo lsof -nP -iTCP -sTCP:LISTEN" # 列出开放的端口
+alias rebuild="source ~/.zshrc && source ~/.npmrc && source ~/.vimrc && source ~/.gemrc"
+alias dsize="du -sh"
 
-# 创建文件
-alias mf_ignore="echo "node_modules\nvendor\n.vscode\n.env\n.git\n.svn\n.idea" > .gitignore"
+# 2.创建文件
+alias mf_ignore="echo \"node_modules\nvendor\n.vscode\n.env\n.git\n.svn\n.idea\n.DS_Store\" > .gitignore"
 alias mf_babelrc='echo { \"presets\": [\"env\"] \} > .babelrc'
+alias mf_composer='echo {} > composer.json'
 
-# Laravel和Composer
+# 3.Laravel和Composer
+alias php71="/usr/local/opt/php71/bin/php"
 alias phpser="php -S 0.0.0.0:80"
 alias sqladmin="php -S 0.0.0.0:8200 -t /Users/xudong7930/Public/sqladmin"
 alias sqladmin_stop="ps -a | grep sqladmin | grep -v grep | awk '{print $1}' | xargs  kill -9 "
 alias ss="php -S 0.0.0.0:8100"
-alias pa_clear="composer dumpautoload;php artisan view:clear;php artisan route:clear; php artisan cache:clear; php artisan clear-compiled"
+alias pa_clear="composer dumpautoload;php artisan view:clear;php artisan route:clear; php artisan cache:clear; php artisan clear-compiled;php artisan key:generate"
 alias laravel55="composer create-project --prefer-dist laravel/laravel=5.5.*"
 alias laravel54="composer create-project --prefer-dist laravel/laravel=5.4.*"
 alias laravel53="composer create-project --prefer-dist laravel/laravel=5.3.*"
@@ -118,6 +120,21 @@ alias cmp_update="composer selfupdate"
 alias cmp_dump="composer dumpautoload"
 alias cmp_clear="composer clearcache"
 alias cmp_install="composer require"
+alias cmp_ginstall="composer global require";
+alias cmp_dinstall="composer require --dev"
+alias cmp_gdinstall="composer global require --dev"
+
+# laravel offen used package
+alias cmp_passport="composer require laravel/passport"
+alias cmp_sentinel="composer require cartalyst/sentinel"
+alias cmp_fractal="composer require spatie/laravel-fractal"
+alias cmp_excel="composer require maatwebsite/excel"
+alias cmp_pdf="composer require barryvdh/laravel-dompdf"
+alias cmp_uuid="composer require webpatser/laravel-uuid"
+
+# 4.phpspec
+alias spec_run="phpspec run -fpretty";
+alias spec_new="phpspec describe";
 
 alias mk_sqlite="touch ./database/database.sqlite"
 alias pa="php artisan"
@@ -128,6 +145,13 @@ alias pam="php artisan migrate";
 alias paeg="php artisan event:generate"
 alias pavp="php artisan vendor:publish"
 alias pa_route="php artisan route:list"
+alias pa_seed="php artisan db:seed"
+alias pa_fixpermit="sudo chgrp -R _www storage bootstrap/cache && sudo chmod -R ug+rwx storage bootstrap/cache"
+
+# 5.phpunit
+alias phptest_update="wget https://phar.phpunit.de/phpunit.phar && chmod +x phpunit.phar && mv phpunit.phar /usr/local/bin/phpunit && phpunit --version"
+alias phptest="phpunit --colors=always"
+alias phptest_version="phpunit --version"
 
 alias mk_controller="php artisan make:controller"
 alias mk_model="php artisan make:model"
@@ -140,6 +164,8 @@ alias mk_seeder="php artisan make:seeder"
 alias mk_job="php artisan make:job"
 alias mk_request="php artisan make:request"
 alias mk_provider="php artisan make:provider"
+alias mk_factory="php artisan make:factory"
+alias mk_policy="php artisan make:policy"
 
 # node & npm
 alias node="node --harmony"
@@ -154,9 +180,11 @@ alias npm_list="npm list --depth=0"
 alias npm_glist="npm list --depth=0 -g"
 alias npm_clear="npm cache clean"
 alias npm_gupdate="npm -g update"
+alias npm_update="npm update"
 alias npm_info="npm info"
 alias npm_webpack="npm i -D babel-loader babel-core babel-preset-env"
 alias npm_babelenv="npm i -D babel-preset-env"
+alias npm_chart="npm i --save chart.js"
 
 # vue
 alias vue_init="vue init webpack"
@@ -198,6 +226,8 @@ alias hiphp="subl ~/Public/Xudong/hi.php"
 alias phpini="subl /usr/local/etc/php/7.1/php.ini"
 alias go_desktop="cd ~/Desktop"
 alias go_xudong="cd ~/Public/Xudong"
+alias xd="cd ~/Public/Xudong"
+alias go_snippet="cd /Users/xudong7930/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Snippets"
 
 # git
 alias gt="git init"
@@ -206,7 +236,7 @@ alias nah="git reset --hard && git clean -df"
 alias gll="git log --oneline --graph"
 
 # homestead
-alias homestead="cd ~/Public/Xudong/Homestead && vagrant"
+alias homestead="cd ~/Public/Homestead && vagrant"
 
 # deployer
 alias dep_local="deployer deploy develop"
