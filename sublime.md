@@ -154,74 +154,98 @@ import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d
 ## 3. 设置
 ```json
 {
-	"added_words": {
-		"author": "xuergou",
-		"color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
-		"theme": "One Dark.sublime-theme",
-	},
-	"always_show_minimap_viewport": false,
-	"bold_folder_labels": true,
-	"caret_style": "phase",
-	"close_windows_when_empty": false,
-	"color_scheme": "Packages/User/Kuroir Theme.tmTheme",
-	"default_line_ending": "unix",
-	"detect_intentation": false,
-	"draw_minimap_border": true,
-	"draw_white_space": "all",
-	"ensure_newline_at_eof_on_save": true,
-	"fade_fold_buttons": false,
-	"findreplace_small": true,
-	
-	"font_options":
-	[
-		"subpixel_antialias"
-	],
-	"font_size": 15,
-	"font_face": "Fira Code",
-
-	"highlight_line": true,
-	"highlight_modified_tabs": true,
-	"hot_exit": false,
-	"ignored_packages":
-	[
-		"Vintage"
-	],
-	"indent_guide_options":
-	[
-		"draw_normal",
-		"draw_active"
-	],
-	"line_numbers": false,
-	"line_padding_bottom": 9,
-	"line_padding_top": 9,
-	"margin": 0,
-	"overlay_scroll_bars": "enabled",
-	"preview_on_click": false,
-	"remember_open_files": false,
-	"rulers":
-	[
-		100
-	],
-	"scroll_past_end": true,
-	"show_definitions": false,
-	"show_encoding": true,
-	"show_full_path": true,
-	"show_line_endings": true,
-	"show_panel_on_build": true,
-	"soda_rect_scrollbars": true,
-	"soda_tabs_autowidth": true,
-	"tab_size": 4,
-	"tabs_small": false,
-	"theme": "SoDaReloaded Light.sublime-theme",
-	"translate_tabs_to_spaces": true,
-	"trim_trailing_white_space_on_save": false,
-	"update_check": false,
-	"word_wrap": true,
-	"use_simple_full_screen": true,
-	"folder_exclude_patterns": [".svn", ".git", ".hg", "CVS", "node_module", ".idea", ".vscode"],
-	"file_exclude_patterns": ["*.pyc", "*.pyo", "*.exe", "*.dll", "*.obj","*.o", "*.a", "*.lib", "*.so", "*.dylib", "*.ncb", "*.sdf", "*.suo", "*.pdb", "*.idb", ".DS_Store", "*.class", "*.psd", "*.db", "*.sublime-workspace"],
-	"auto_indent": true,
-	"auto_complete_commit_on_tab": false
+    "always_show_minimap_viewport": false,
+    "auto_complete_delay": 5,
+    "auto_complete_commit_on_tab": false,
+    "auto_complete_selector": "source, text",
+    "auto_indent": true,
+    "bold_folder_labels": true,
+    "caret_style": "phase",
+    "close_windows_when_empty": false,
+    "create_window_at_startup": false,
+    "color_scheme": "Packages/User/SublimeLinter/Breakers (XUDONG).tmTheme",
+    "default_line_ending": "unix",
+    "detect_intentation": false,
+    "draw_minimap_border": true,
+    "draw_white_space": "none",
+    "el_capitan_font_default": false,
+    "el_capitan_font_helvetica": false,
+    "el_capitan_font_helvetica_neue": false,
+    "el_capitan_font_san_francisco": false,
+    "el_capitan_sidebar_blue_folders": true,
+    "ensure_newline_at_eof_on_save": true,
+    "fade_fold_buttons": false,
+    "findreplace_small": true,
+    "folder_exclude_patterns":
+    [
+        ".svn",
+        ".git",
+        ".idea",
+        ".vscode",
+        ".DS_Store",
+        "__pycache__",
+        "*.pyc",
+        "*.pyo",
+        "*.exe",
+        "*.dll",
+        "*.obj",
+        "*.o",
+        "*.a",
+        "*.lib",
+        "*.so",
+        "*.dylib",
+        "*.ncb",
+        "*.sdf",
+        "*.suo",
+        "*.pdb",
+        "*.idb",
+        "*.psd"
+    ],
+    "font_face": "Consolas",
+    "font_options":
+    [
+        "subpixel_antialias",
+        "no_round"
+    ],
+    "font_size": 16,
+    "highlight_line": true,
+    "highlight_modified_tabs": true,
+    "hot_exit": false,
+    "ignored_packages":
+    [
+        "Markdown",
+        "Vintage"
+    ],
+    "indent_guide_options":
+    [
+        "draw_normal",
+        "draw_active"
+    ],
+    "rulers": [80],
+    "line_numbers": true,
+    "line_padding_bottom": 6,
+    "line_padding_top": 6,
+    "margin": 0,
+    "open_files_in_new_window": false,
+    "overlay_scroll_bars": "enabled",
+    "preview_on_click": false,
+    "remember_open_files": false,
+    "scroll_past_end": false,
+    "show_definitions": false,
+    "show_encoding": true,
+    "show_full_path": true,
+    "show_line_endings": true,
+    "show_panel_on_build": true,
+    "soda_rect_scrollbars": true,
+    "soda_tabs_autowidth": true,
+    "tab_size": 4,
+    "tabs_small": false,
+    "theme": "El Capitan.sublime-theme",
+    "translate_tabs_to_spaces": true,
+    "trim_trailing_white_space_on_save": false,
+    "update_check": false,
+    "use_simple_full_screen": false,
+    "word_wrap": "auto"
 }
 ```
 
