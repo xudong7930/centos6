@@ -1,0 +1,4 @@
+{
+    "php_path": "/usr/local/opt/php71/bin/php",
+    "artisan_path": "artisan"
+}

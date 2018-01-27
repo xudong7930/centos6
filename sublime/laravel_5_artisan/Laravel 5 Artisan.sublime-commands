@@ -1,0 +1,208 @@
+[
+	{
+        "caption": "Laravel Artisan 5: Dusk:Page",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "dusk:page",
+            "fill_in": true,
+            "fill_in_lable": "Enter Page Name"
+        }
+    },
+	{
+        "caption": "Laravel Artisan 5: Dusk:Make",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "dusk:make",
+            "fill_in": true,
+            "fill_in_lable": "Enter Dusk Name"
+        }
+    },
+    {
+        "caption": "Laravel Artisan 5: Dusk:Install",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "dusk:install",
+        }
+    },
+    {
+        "caption": "Laravel Artisan 5: Dusk",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "dusk",
+        }
+    },
+    {
+        "caption": "Laravel Artisan 5: Run Command",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "",
+            "fill_in": true,
+            "fill_in_lable": "Enter Command"
+        }
+    },
+    {
+        "caption": "Laravel Artisan 55: Preset:React",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "preset react"
+        }
+    },
+    {
+        "caption": "Laravel Artisan 55: Preset:Vue",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "preset vue"
+        }
+    },
+    {
+        "caption": "Laravel Artisan 55: Preset:Bootstrap",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "preset bootstrap"
+        }
+    },
+    {
+        "caption": "Laravel Artisan 55: Preset:None",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "preset none"
+        }
+    },
+    {
+        "caption": "Laravel Artisan 5: Make Resource",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "make:resource",
+            "fill_in": true,
+            "fill_in_lable": "Enter the resource name"
+        }
+    },
+    {
+        "caption": "Laravel Artisan 55: Migrate:Fresh",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "migrate:fresh"
+        }
+    },
+    {
+        "caption": "Laravel Artisan 55: Make:Notification",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "make:notification",
+            "fill_in": true,
+            "fill_in_lable": "Enter the notification name"
+        }
+    },
+    {
+        "caption": "Laravel Artisan 55: Make:Mail",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "make:mail",
+            "fill_in": true,
+            "fill_in_lable": "Enter the mail name"
+        }
+    },
+    {
+        "caption": "Laravel Artisan 55: Make:Factory",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "make:factory",
+            "fill_in": true,
+            "fill_in_lable": "Enter the factory name"
+        }
+    },
+    {
+        "caption": "Laravel Artisan 55: Make:Exception",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "make:exception",
+            "fill_in": true,
+            "fill_in_lable": "Enter the exception name"
+        }
+    },
+    {
+        "caption": "Laravel Artisan 55: Make:Command",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "make:command",
+            "fill_in": true,
+            "fill_in_lable": "Enter the command name"
+        }
+    },
+
+    {
+        "caption": "Laravel Artisan 55: Inspir",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "inspire",
+        }
+    },
+
+    {
+        "caption": "Laravel Artisan 5: Env",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "env",
+        }
+    },
+
+
+    {
+        "caption": "Laravel Artisan 5: Storage Link",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "storage:link",
+        }
+    },
+
+    {
+        "caption": "Laravel Artisan 5: Fresh Migrate",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "migrate:fresh",
+        }
+    },
+    {
+        "caption": "Laravel Artisan 5: Make Resource Model",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "make:model -a",
+            "fill_in": true,
+            "fill_in_lable": "Enter the resource name"
+        }
+    },
+    {
+        "caption": "Laravel Artisan 5: Make Notifications Table",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "notifications:table",
+        }
+    },
+    {
+        "caption": "Laravel Artisan 5: Make Policy",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "make:policy",
+            "fill_in": true,
+            "fill_in_lable": "Enter the Policy name"
+        }
+    },
+    {
+        "caption": "Laravel Artisan 5: Make Email",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "make:mail",
+            "fill_in": true,
+            "fill_in_lable": "Enter the mail name"
+        }
+    },
+    {
+        "caption": "Laravel Artisan 5: Make Rule",
+        "command": "laravel5_artisan",
+        "args": {
+            "command": "make:rule",
+            "fill_in": true,
+            "fill_in_lable": "Enter the rule name"
+        }
+    },
+]
