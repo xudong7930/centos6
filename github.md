@@ -1,7 +1,7 @@
 github
 ======
 
-[Git](https://git-scm.com)
+[Git官网](https://git-scm.com)
 
 ## 配置文件(~/.gitconfig)
 ```yml
@@ -69,3 +69,96 @@ git push -u origin master
 已存在git项目:
 git remote add origin https://github.com/xudong7930/learning-git.git
 git push -u origin master
+
+
+
+# command
+## git diff
+文件的状态: untracked, staged, unstaged
+```
+git diff #unstaged
+git diff HEAD  #staged, unstaged
+git diff --cached #staged
+```
+
+## git commit
+```
+git commit #正常提交
+git commit -m "some message" #带备注的提交
+git commit --amend --no-eidt #将变更的文件提交到上次提交的位置,并且不锈钢注释
+```
+
+## git reset
+```
+git reset 1.php #将已经add后的文件恢复为modify状态
+git rest --hard HEAD #将指针移到HEAD版本
+git rest --hard HEAD~2 #将指针移到HEAD的前2个版本
+git rest --hard HEAD@{2} #将指针移到HEAD的前2个版本
+git rest --hard a1d2f4e #退回到指定版本
+```
+
+## git log
+git log --online #查看提交日志
+git reflog #查看版本变化(reset)日志
+
+
+## git checkout
+git checkout -- 1.py #将指定文件退回到上一个版本
+git checkout a1d2f4e -- 1.py #将指定文件退回到指定版本
+git checkout master
+
+## git merge
+git merge
+git merge --no-ff -m "keep merge info" develop #分支合并
+
+
+# git rebase
+```
+git rebase master #在dev上重新更新基于xx主版本开发的东西
+git rebase --continue #继续rebase
+git rebase --skip #跳过rebase
+git rebase --abort #取消rebase
+```
+
+## git stash 临时修改
+```
+git stash #将当期修改的文件放到缓存区,做完其他工作后(新建分支)再返回接着做
+git statsh pop #将缓存区的修改的文件恢复到本地
+```
+
+## git push 推送到远端
+```
+git push -u origin master|develop #将本地分支master/develop推送到远端
+```
+
+## git的hooks
+* 在.git/hooks中有一些内置的脚本,用于代码更新,提交之前之后执行,没有.sample
+
+
+## git的upstream和downstream
+* 对于从远程库中clone或fetch得到的本地分支，都在远程库中有一个upstream分支
+* 从本地分支A push 到远程分支B,则B是A的upstream,A是B的downstream
+* git push -u origin master #-u表示远程分支设置为upstream
+* 本质是修改远程和本地分支的不停的合并.
+
+
+[Git-Flow工作流]
+##安装
+> brew install git-flow-avh  
+
+* master只能是产品代码,不能在这里修改代码
+* develop专门用于开发新功能
+
+#开始新功能 git flow feature start|finish|publish|track|diff|rebase|checkout|pull|delete
+```
+git flow feature #列出所有开发分支
+git flow feature start branch-name  #1.新建一个feature/branch-name的分支
+git flow feature finish branch-name  #2.完成开发(删除功能分支,合并到develop)
+git flow release start 1.1.5  #3.经过在develop上完全的测试,发布版本到release,对release进行测试
+git flow hotfix start missing-link #4.在release版本测试中发现了一些错误.但此时无论是release还是develop上修改都是不合适的.因此用hotfix分支解决错误
+git flow hotfix finish missing-link #5.完成hotfix分支的错误修复
+```
+
+[GitLab私有代码托管]
+* 官网: https://gitlab.com
+
