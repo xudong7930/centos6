@@ -27,6 +27,7 @@ make && make install
 # create php.ini and php-fpm.conf file
 cp php.ini-production /usr/local/php/etc/php.ini
 cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf
+cp /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf
 
 # php-fpm
 cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm
