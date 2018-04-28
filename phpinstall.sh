@@ -20,7 +20,7 @@ wget http://jp2.php.net/distributions/php-5.6.20.tar.gz
 tar -zxf php-5.6.20.tar.gz
 cd php-5.6.20
 
-./configure --prefix=/usr/local/php --with-libdir=lib64 --enable-fpm --enable-mysqlnd --with-mysql=mysqlnd --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --enable-opcache --enable-pcntl --enable-mbstring --enable-soap --enable-zip --enable-bcmath --enable-exif --enable-ftp --enable-intl --enable-maintainer-zts --with-openssl --with-config-file-path=/usr/local/php/etc --with-zlib --with-curl --with-gd --with-zlib-dir=/usr/lib --with-png-dir=/usr/lib --with-jpeg-dir=/usr/lib --with-freetype-dir=/usr/lib --with-mhash
+./configure --prefix=/usr/local/php --with-libdir=lib64 --enable-fpm --enable-mysqlnd --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --enable-opcache --enable-pcntl --enable-mbstring --enable-soap --enable-zip --enable-bcmath --enable-exif --enable-ftp --enable-intl --enable-maintainer-zts --with-openssl --with-config-file-path=/usr/local/php/etc --with-zlib --with-curl --with-gd --with-zlib-dir=/usr/lib --with-png-dir=/usr/lib --with-jpeg-dir=/usr/lib --with-freetype-dir=/usr/lib --with-mhash
 
 make && make install
 
