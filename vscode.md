@@ -70,6 +70,7 @@ command + shift + p -> 输入: shell Command: Install
     "editor.wordWrap": "on",
     "editor.fontLigatures": true,
     "editor.tabCompletion": true,
+    "editor.renderIntentGuides": false,
     
     // php
     "php.validate.enable": true,
