@@ -430,6 +430,7 @@ alias envoy_run="envoy run"
 
 # httpie
 alias http_get="http --json get"
+alias jq="python -mjson.tool"
 
 # composer & brew & path
 export PATH="$HOME/.composer/vendor/bin:$PATH"
