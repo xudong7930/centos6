@@ -75,6 +75,7 @@ command + shift + p -> 输入: shell Command: Install
     "editor.codeActionsOnSave": {
         "source.organizeImports": true
     },
+    "editor.acceptSuggestionOnEnter": "off",
     
     // php
     "php.validate.enable": true,
@@ -132,7 +133,8 @@ command + shift + p -> 输入: shell Command: Install
         "vue-html"
     ],
     "composer.executablePath": "/usr/local/bin/composer",
-    "workbench.iconTheme": "vs-minimal"
+    "workbench.iconTheme": "vs-minimal",
+    "npm.enableScriptExplorer": true
 }
 ```
 
