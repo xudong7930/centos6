@@ -58,6 +58,7 @@ command + shift + p -> 输入: shell Command: Install
 ```json
 {
     "window.zoomLevel": -0.5,
+    "window.title": "${rootPath}${separator}${activeEditorName}${separator}${activeEditorShort}",
     "window.openFilesInNewWindow": "off",
     "editor.fontFamily": "Fira Code",
     "editor.fontSize": 16,
@@ -71,6 +72,9 @@ command + shift + p -> 输入: shell Command: Install
     "editor.fontLigatures": true,
     "editor.tabCompletion": true,
     "editor.renderIntentGuides": false,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    },
     
     // php
     "php.validate.enable": true,
