@@ -60,7 +60,7 @@ command + shift + p -> 输入: shell Command: Install
     "window.zoomLevel": -0.5,
     "window.title": "${rootPath}${separator}${activeEditorName}${separator}${activeEditorShort}",
     "window.openFilesInNewWindow": "off",
-    "editor.fontFamily": "Fira Code",
+    "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', Monospace",
     "editor.fontSize": 16,
     "editor.lineNumbers": "on",
     "editor.lineHeight": 30,
@@ -99,6 +99,12 @@ command + shift + p -> 输入: shell Command: Install
     "workbench.statusBar.visible": true,
     "workbench.startupEditor": "newUntitledFile",
     "workbench.colorTheme": "Slime",
+    "workbench.colorCustomizations":{
+        // "tab.activeBackground": "#282c34",
+        // "activityBar.background": "#282c34",
+        // "editorGroup.background": "#282c34",
+        // "sideBar.background": "#282c34"
+    },
 
     // terminal
     "terminal.integrated.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
