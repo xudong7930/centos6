@@ -89,6 +89,7 @@ command + shift + p -> 输入: shell Command: Install
         "vue-html": "html",
         "vue": "html"
     },
+    "search.location": "panel",
 
     // explorer
     "explorer.openEditors.visible": 0,
