@@ -1,6 +1,9 @@
 OSX 命令行
 =========
 
+# 禁止cups打印服务
+> sudo launchctl unload /System/Library/LaunchDaemons/org.cups.cupsd.plist
+
 # 禁止osx自带的apache
 停止:
 > sudo apachectl -k stop
