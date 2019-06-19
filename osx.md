@@ -1,6 +1,12 @@
 OSX 命令行
 =========
 
+# 命令行APP
+json格式化: jq
+进程查看: htop
+文件大小查看: ncdu
+树形显示文件和目录: tree
+
 # 禁止cups打印服务
 > sudo launchctl unload /System/Library/LaunchDaemons/org.cups.cupsd.plist
 

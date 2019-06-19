@@ -57,3 +57,14 @@ $('.episode-list .episode-list-item').each(function(index, item){
     console.info(prefix+title+".mp4");
 })
 ```
+
+# for vultr
+```javascript
+$("pre > a").each(function(index, item){
+    var url = $(item).attr('href');
+    var host = window.location.href + url;
+    console.info(host);
+});
+```
+
+
