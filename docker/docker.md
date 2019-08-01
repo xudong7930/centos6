@@ -11,6 +11,8 @@ Docker
 
 重启服务:
 systemctl restart docker.service
+systemctl stop docker.service
+systemctl status docker.service
 
 
 # 镜像Image

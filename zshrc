@@ -5,8 +5,11 @@
 export ZSH=/Users/xudong7930/.oh-my-zsh
 export XDEBUG_CONFIG="idekey=VSCODE"
 
+#php-language-server
+export PHPLS_ALLOW_XDEBUG=1
+
 # 主题设置: pygmalion,robbyrussell, af-magic, steeef, ys, jonathan, Candy, cloud
-ZSH_THEME="ys"
+ZSH_THEME="robbyrussell"
 
 # 区分大小写: true,false
 CASE_SENSITIVE="false"
@@ -43,7 +46,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # ZSH插件: git,zsh-autosuggestions
-plugins=(zsh-autosuggestions)
+plugins=(zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -77,12 +80,32 @@ DISABLE_AUTO_UPDATE=true
 ## 别名设置 ##
 ############
 # 1.OSX
+
+#2019年07月22日
+alias sort.cpu="ps -Ao user,pid,pcpu,comm -r | head -n 16"
+alias sort.mem="ps -Amo user,pid,pmem,comm -r | head -n 16"
+
+#时间戳
+alias date.timestamp="date '+%s'"
+alias date.now="date '+%Y-%m-%d %H:%M:%S'"
+
+
+#压缩无密码
+alias zip.nopass="zip -rq0"
+
+#压缩有密码
+alias zip.pass="zip -rq0 -P 'a'"
+alias xdebug.status="php -v"
+alias xdebug.down="mv /usr/local/etc/php/7.3/conf.d/ext-xdebug.ini /usr/local/etc/php/7.3/conf.d/ext-xdebug.inn"
+alias xdebug.up="mv /usr/local/etc/php/7.3/conf.d/ext-xdebug.inn /usr/local/etc/php/7.3/conf.d/ext-xdebug.ini"
 alias grep="grep --color=auto"
 alias ip="ipconfig getifaddr en0"
 alias ipo="curl cip.cc"
+alias cp="cp -i"
 alias dns="ipconfig getpacket en0 | grep domain_name_server | cut -d ':' -f 2 | sed 's/{//g'| sed 's/}//g' | sed 's/^[ \t]*//g' |  sed 's/[ \t]*$//g'"
-alias clear_trash="sudo rm -fr ~/.Trash/*"
-alias clear_log="sudo rm -fr /private/var/log/asl/*.asl /private/var/log/DiagnosticMessages/*.asl /private/var/log/system.log.*.gz /private/var/log/opendirectoryd.log.* /private/var/log/wifi.log.*.bz2 /private/var/log/powermanagement/*.asl"
+alias clear.trash="sudo rm -fr ~/.Trash/*"
+alias clear.paste="pbcopy < /dev/null"
+alias clear.log="sudo rm -fr /private/var/log/asl/*.asl /private/var/log/DiagnosticMessages/*.asl /private/var/log/system.log.*.gz /private/var/log/opendirectoryd.log.* /private/var/log/wifi.log.*.bz2 /private/var/log/powermanagement/*.asl"
 alias mk_pass='LC_ALL=C tr -dc "[:alpha:][:alnum:]" < /dev/urandom | head -c 20'
 alias show_hide='defaults write com.apple.finder AppleShowAllFiles -bool true; KillAll Finder'
 alias show_nohide='defaults write com.apple.finder AppleShowAllFiles -bool false;KillAll Finder'
@@ -91,6 +114,7 @@ alias ikill="kill -9"
 alias wgetc="wget -c"
 alias tree="tree -L 1"
 alias coffee="caffeinate -i -t"
+alias kill.usb="sudo killall -STOP -c usbd"
 alias ej="diskutil eject /dev/disk2"
 alias jt="screencapture -i ~/Desktop/IMG_`date +%Y%m%d_%H%M%S`.png"
 alias jt_window="screencapture -w ~/Desktop/IMG_`date +%Y%m%d_%H%M%S`.png"
@@ -107,7 +131,7 @@ alias sys_hardware="system_profiler SPHardwareDataType"
 alias sys_camera="system_profiler SPCameraDataType"
 alias sys_os="system_profiler SPSoftwareDataType"
 
-alias port="echo 'a' | sudo lsof -nP -iTCP -sTCP:LISTEN"
+alias port="echo 'a' | sudo -S lsof -nP -iTCP -sTCP:LISTEN"
 alias rebuild="source ~/.zshrc && source ~/.npmrc && source ~/.vimrc && source ~/.gemrc"
 alias dsize="du -sh"
 alias ip6_disable="networksetup -setv6off Wi-Fi"
@@ -124,49 +148,40 @@ alias ss="php -S 0.0.0.0:8100"
 alias ss.chrome="chrome http://127.0.0.1:8100"
 alias ss.py="python3 -m http.server"
 
-alias pa_clear="composer dumpautoload;php artisan view:clear;php artisan route:clear; php artisan cache:clear; php artisan clear-compiled;php artisan key:generate"
-alias lal57="composer create-project --prefer-dist 'laravel/laravel=5.7.*'"
+alias pa.clear="php artisan config:clear;php artisan view:clear;php artisan route:clear; php artisan cache:clear; php artisan clear-compiled"
 alias lal56="composer create-project --prefer-dist 'laravel/laravel=5.6.*'"
-alias lal55="composer create-project --prefer-dist 'laravel/laravel=5.5.*'"
-alias lal54="composer create-project --prefer-dist 'laravel/laravel=5.4.*'"
-alias lal53="composer create-project --prefer-dist 'laravel/laravel=5.3.*'"
 alias lal="composer create-project --prefer-dist 'laravel/laravel'"
 
 alias cmp="composer"
-alias cmp_list="composer show"
-alias cmp_init="composer init"
-alias cmp_update="composer self-update"
-alias cmp_update_package="composer update"
-alias cmp_update_global="composer global update"
-alias cmp_dump="composer dumpautoload"
+alias cmp.outdated="composer outdated -D"
+alias cmp.show="composer show"
+alias cmp.init="composer init"
+alias cmp.update_self="composer self-update"
+alias cmp.update_package="composer update --with-dependencies"
+alias cmp.dump="composer dumpautoload"
+alias cmp.dump_optimize="composer dumpautoload -o"
+alias cmp.clear="composer clearcache"
+alias cmp.install="composer require"
+alias cmp.install_dev="composer require --dev"
+alias cmp.use_repo_china="composer config -g repo.packagist composer https://packagist.phpcomposer.com"
+alias cmp.use_repo_usa="composer config repo.packagist composer https://packagist.org"
 
-alias cmp_dump_optimize="composer dumpautoload -o"
-alias cmp_clear="composer clearcache"
-alias cmp_install="composer require"
-alias cmp_install_dev="composer require --dev"
-alias cmp_install_global="composer global require";
-alias cmp_install_global_dev="composer global require --dev"
-alias cmp_repo_china="composer config -g repo.packagist composer https://packagist.phpcomposer.com"
-alias cmp_repo_usa="composer config repo.packagist composer https://packagist.org"
+alias cmpg="composer global"
 
 # Laravel Package
 alias cmp_passport="composer require laravel/passport"
-alias cmp_sentinel="composer require cartalyst/sentinel"
-alias cmp_fractal="composer require spatie/laravel-fractal"
+alias cmp_image="composer require intervention/image"
 alias cmp_excel="composer require maatwebsite/excel:~2.1.0"
 alias cmp_pdf="composer require barryvdh/laravel-dompdf"
 alias cmp_uuid="composer require webpatser/laravel-uuid"
-alias cmp_image="composer require intervention/image"
 alias cmp_debugbar="composer require barryvdh/laravel-debugbar --dev"
 alias cmp_devpkg="composer require jeroen-g/laravel-packager"
 alias cmp_cors="composer require barryvdh/laravel-cors"
 alias cmp_guzzle="composer require guzzlehttp/guzzle"
 alias cmp_homestead="composer require laravel/homestead --dev"
 alias cmp_dusk="composer require laravel/dusk --dev"
-alias cmp_recapcha="composer require google/recaptcha"
 alias cmp_mock="composer require "mockery/mockery":~1.0 --dev"
 alias cmp.redis="composer require predis/predis"
-alias cmp.dump="composer dumpautoload"
 
 # 4.phpspec
 alias spec_run="phpspec run -fpretty";
@@ -182,7 +197,7 @@ alias pa_env="php artisan env"
 alias pat="php artisan tinker"
 alias pak="php artisan key:generate"
 alias tinker="php artisan tinker"
-alias pas="php artisan serve --host=0.0.0.0 --port=8000"
+alias pas="php artisan serve --host=0.0.0.0 --port=8100"
 alias pam="php artisan migrate";
 alias pam_fresh="php artisan migrate:fresh";
 alias pam_refresh="php artisan migrate:refresh";
@@ -263,12 +278,15 @@ alias chrome.hide="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrom
 
 # SSH
 alias ssh.key="cat ~/.ssh/id_rsa2.pub | pbcopy && echo 'ssh key copyed to clipboard!'"
+
 alias vultr="ssh -p 30011 -o "ServerAliveInterval=60" root@45.32.77.118 -i ~/.ssh/id_rsa2"
-alias vps="ssh -p 30011 -o "ServerAliveInterval=60" root@45.32.77.118 -i ~/.ssh/id_rsa2"
+
+alias sftp.vultr="code -r ~/Public/xudong/sftp_vultr"
+alias sftp.vagrant="code -r ~/Public/xudong/sftp_vagrant"
+
 alias zshrc="subl ~/.zshrc"
 alias vimrc="subl ~/.vimrc"
 alias hosts="subl /etc/hosts"
-alias gitconfig="subl ~/.gitconfig"
 
 # for simple file
 alias hi.php="subl ~/Public/Xudong/hi.php"
@@ -280,57 +298,47 @@ alias hi.bash="subl ~/Public/Xudong/hi.sh"
 alias hi.vue="subl ~/Public/Xudong/hi.vue"
 alias hi.ini="subl ~/Public/Xudong/hi.ini"
 alias hi.json="subl ~/Public/Xudong/hi.json"
-alias php.ini="subl /usr/local/etc/php/7.2/php.ini"
+alias php.ini="subl /usr/local/etc/php"
 alias s.new="s --new-window"
+alias php71="/usr/bin/php"
+alias php73="/usr/local/bin/php"
+alias doc.laravel="subl ~/code/doc.Laraveldoc"
+alias doc.centos="subl ~/code/doc.Centos6"
 
-# for mysql
+#mysql
 alias mysql.cnf="subl /usr/local/mysql/etc/my.cnf"
 alias mysql.connect="/usr/local/mysql/bin/mysql -u root -pabc123"
+alias mysql.run="/usr/local/mysql/bin/mysql -u root -pabc123 -e"
 alias mysql.log="sudo cat /usr/local/mysql/data/mysqld.local.err"
+alias mysql.up="echo 'a' | sudo /usr/local/mysql/support-files/mysql.server start"
+alias mysql.down="echo 'a' | sudo /usr/local/mysql/support-files/mysql.server stop"
 
-alias go_desktop="cd ~/Desktop"
+
+#路径导航
 alias go_snippet="cd /Users/xudong7930/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Snippets"
+alias go.xd="cd  ~/Public/xudong && ls"
+alias go.down="cd ~/Downloads && ls"
+alias go.desk="cd ~/Desktop && ls"
+alias go.code="cd ~/code && ls"
+alias go.va="cd ~/Public/xudong/vagrant_box/homestead && ls"
+alias go.laravel="cd ~/code/laravel56 && ls"
 
-# git for version control
-	alias g.test="ssh -T git@github.com"
+# git
+alias git.test_github="ssh -T git@github.com"
+alias git.config_edit="subl ~/.gitconfig"
+alias git.config="git config --list"
 
-	#1.git.create
-	#从远程地址创建项目
-	alias gc="git clone"
-	#从远程地址创建项目，包含子项目
-	alias gc.sub="git clone --recurse-submodules"
-	#创建空的git项目
-	alias gi="git init"
+alias git.status="git status"
+alias gs="git status"
 
-	#2.git.config
-	#列出git配置
-	alias gconf="git config --list"
-	#设置git配置
-	alias gconf.set="git config --global"
+alias git.log="git log --oneline --decorate --color"
+alias git.log_all="git log --graph --abbrev-commit --decorate --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)'"
 
-	#3.git.localchanges
-	#本地文件状态
-	alias gs="git status"
-	#本地文件简短状态
-	alias gss="git status -sb"
+#查看项目打包
+alias git.tag="git tag"
 
-	#4.git.commit history
-	alias glog="git log --oneline --decorate --color"
-	alias glog.all="git log --graph --abbrev-commit --decorate --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)'"
-
-	#5.git.branch&tags
-	#列出所有标签
-	alias gtag="git tag"
-
-	#6.git.update&publish
-	#查看当前配置有哪些远程仓库
-	alias grv="git remote -v"
-
-	#7.git.merge&rebase
-
-	#8.git.undo
-
-	#9.git.submodules
+#查看项目pull和push地址
+alias git.remote_url="git remote -v"
 
 
 # Homestead: Laravel项目开发环境虚拟机
@@ -353,7 +361,7 @@ alias dep_ready="deployer deploy ready"
 alias dep_product="deployer deploy product"
 
 # Homebrew: system package manager
-alias brew.update="brew update"
+alias brew.update_self="brew update"
 alias brew.upgrade="brew upgrade"
 alias brew.search="brew search"
 alias brew.install="brew install"
@@ -364,8 +372,11 @@ alias brew.list="brew list"
 alias brew.outdated="brew outdated"
 alias brew.service="brew services list"
 
-alias redis.up="brew services start redis@3.2"
-alias redis.down="brew services stop redis@3.2"
+# redis
+alias redis.up="brew services start redis"
+alias redis.down="brew services stop redis"
+alias redis.connect="/usr/local/bin/redis-cli -h 127.0.0.1 -p 6379 -a 123456"
+alias redis.conf="subl /usr/local/etc/redis.conf"
 
 alias mongo.up="brew services start mongodb"
 alias mongo.down="brew services stop mongodb"
@@ -373,9 +384,13 @@ alias mongo.down="brew services stop mongodb"
 alias phpfpm.up="brew services start php"
 alias phpfpm.down="brew services stop php"
 
+
 alias nginx.up="nginx -t && brew services start nginx"
+alias nginx.reload="nginx -t && nginx -s reload"
 alias nginx.down="nginx -t && brew services stop nginx"
 alias nginx.conf="/usr/local/bin/subl /usr/local/etc/nginx/servers/"
+alias dev.up="nginx.up && phpfpm.up && mysql.up"
+alias dev.down="nginx.down && phpfpm.down && mysql.down"
 
 alias how_to_use="/usr/local/bin/tldr -p=osx"
 
@@ -386,9 +401,9 @@ alias va.down="vagrant halt"
 alias va.status="vagrant status"
 alias va.ssh="vagrant ssh"
 alias va.port="vagrant port"
+alias va.connect="ssh -p 22 vagrant@172.16.1.10 -i ~/Public/xudong/vagrant_box/homestead/.vagrant/machines/devserver2/virtualbox/private_key -o UserKnownHostsFile=/dev/null"
 
 alias vagrant_version="/usr/local/bin/vagrant version"
-alias vagrant_up="vagrant up"
 alias vagrant_delete="vagrant destroy"
 alias vagrant_box_list="vagrant box list"
 alias vagrant_box_remove="vagrant box remove"
@@ -398,6 +413,11 @@ alias envoy_init="envoy init"
 alias envoy_list="envoy tasks"
 alias envoy_run="envoy run"
 
+
 # composer & brew & path
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
