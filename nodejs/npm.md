@@ -30,3 +30,47 @@
 ## 全局包
 * npm -g i vue-cli webpack  
 * npm init -y 生成package.json文件
+
+
+
+# 常用包
+npm.install -D jquery@3.4.1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

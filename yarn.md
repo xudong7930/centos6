@@ -14,3 +14,7 @@ yarn list "列出安装的包"
 yarn outdated "过期的包"
 yarn info package "查看包信息"
 
+
+npm install -g yarn --registry=https://registry.npm.taobao.org
+yarn config set registry https://registry.npm.taobao.org -g
+yarn config set sass_binary_site http://cdn.npm.taobao.org/dist/node-sass -g

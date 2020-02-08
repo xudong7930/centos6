@@ -1,5 +1,5 @@
-VueJS
-=====
+Vue
+===
 
 ## 如何安装 ##
 ```bash
@@ -27,5 +27,20 @@ npm install vue-router vue-async-data vue-validator vue-touch vue-resource vuex 
 ## 相关网址 ##
 [Vue.js](https://cn.vuejs.org/)
 [Vuex](http://vuex.vuejs.org/zh-cn/)
-[Node.js](https://nodejs.org/en/)
 [JSONPlaceHolder](https://jsonplaceholder.typicode.com)
+
+
+
+
+
+
+## vue起步@2020-02-06
+
+```
+# 安装vue-cli
+yarn global add @vue/cli
+
+# 创建一个项目
+vue create my-project
+```
+
