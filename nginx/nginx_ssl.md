@@ -12,6 +12,7 @@ Nginx使用免费的SSL
 
 	#创建Let's Encrypt私钥
 	openssl genrsa 4096 > account.key 
+	openssl dhparam 1024 > domain.dhparam
 
 	#创建CSR文件
 	openssl genrsa 4096 > domain.key
