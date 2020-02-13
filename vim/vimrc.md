@@ -1,3 +1,35 @@
+vim editor
+==========
+
+
+## 快捷操作
+正常模式:
+i "在当前字符左边处插入"
+a "在当前字符右边处插入"
+
+shift+a "在当前行尾插入"
+shift+i "在当前行首插入"
+
+o "在当前行下面插入"
+shift+o "在当前行下面插入"
+
+shift+6 "行首"
+shift+4 "行尾"
+
+shift+g "文件末尾"
+gg "文件头部"
+10gg "文件第10行"
+
+dd "删除光标所在当前行"
+yy "复制光标所在当前行"
+p "粘贴内容"
+
+:s/Fira Code/Fira_Code/g "当前行全部替换"
+:%s/Fira Code/Fira_Code/g "全文替换"
+
+
+# .vimrc
+```
 set nocompatible "不兼容vi一致性模式"
 colorscheme desert "编辑器颜色主题"
 syntax on "代码语法高亮"
@@ -46,4 +78,4 @@ let mapleader="\<Space>" "设置使用空格键作为热键"
 nnoremap <Leader>w :w<cr> "保存文件快捷键"
 nnoremap <CR> G "按enter跳转到文件末尾"
 nnoremap <BS> gg "按backspace跳转到文件开始"
-
+```

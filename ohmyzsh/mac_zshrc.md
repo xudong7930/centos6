@@ -9,6 +9,7 @@ export XDEBUG_CONFIG="idekey=VSCODE"
 export PHPLS_ALLOW_XDEBUG=1
 
 # 主题设置: pygmalion,robbyrussell, af-magic, steeef, ys, jonathan, Candy, cloud
+; ZSH_THEME="ys"
 ZSH_THEME="robbyrussell"
 
 # 区分大小写: true,false
@@ -55,6 +56,7 @@ source $ZSH/oh-my-zsh.sh
 
 # 设置终端编码环境
 export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8  
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -73,13 +75,17 @@ export LANG=en_US.UTF-8
 # DISABLE_UPDATE_PROMPT=true
 
 # 禁用自动更新
-DISABLE_AUTO_UPDATE=true
+# DISABLE_AUTO_UPDATE=false
 
 
 #############
 ## 别名设置 ##
 ############
 # 1.OSX
+
+#2019年08月01日
+alias mac.version="sw_vers && uname -a"
+alias ssh.nopass="ssh-add -K ~/.ssh/id_rsa"
 
 #2019年07月22日
 alias sort.cpu="ps -Ao user,pid,pcpu,comm -r | head -n 16"
@@ -100,7 +106,7 @@ alias xdebug.down="mv /usr/local/etc/php/7.3/conf.d/ext-xdebug.ini /usr/local/et
 alias xdebug.up="mv /usr/local/etc/php/7.3/conf.d/ext-xdebug.inn /usr/local/etc/php/7.3/conf.d/ext-xdebug.ini"
 alias grep="grep --color=auto"
 alias ip="ipconfig getifaddr en0"
-alias ipo="curl cip.cc"
+alias ip.out="curl cip.cc"
 alias cp="cp -i"
 alias dns="ipconfig getpacket en0 | grep domain_name_server | cut -d ':' -f 2 | sed 's/{//g'| sed 's/}//g' | sed 's/^[ \t]*//g' |  sed 's/[ \t]*$//g'"
 alias clear.trash="sudo rm -fr ~/.Trash/*"
@@ -149,8 +155,10 @@ alias ss.chrome="chrome http://127.0.0.1:8100"
 alias ss.py="python3 -m http.server"
 
 alias pa.clear="php artisan config:clear;php artisan view:clear;php artisan route:clear; php artisan cache:clear; php artisan clear-compiled"
+alias pa.cls="php artisan config:clear;php artisan view:clear;php artisan route:clear; php artisan cache:clear; php artisan clear-compiled"
 alias lal56="composer create-project --prefer-dist 'laravel/laravel=5.6.*'"
 alias lal="composer create-project --prefer-dist 'laravel/laravel'"
+alias lal6="composer create-project --prefer-dist 'laravel/laravel=6.*'"
 
 alias cmp="composer"
 alias cmp.outdated="composer outdated -D"
@@ -278,8 +286,7 @@ alias chrome.hide="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrom
 
 # SSH
 alias ssh.key="cat ~/.ssh/id_rsa2.pub | pbcopy && echo 'ssh key copyed to clipboard!'"
-
-alias vultr="ssh -p 30011 -o "ServerAliveInterval=60" root@45.32.77.118 -i ~/.ssh/id_rsa2"
+alias vultr="ssh -p 30022 -i ~/.ssh/id_rsa root@vultr"
 
 alias sftp.vultr="code -r ~/Public/xudong/sftp_vultr"
 alias sftp.vagrant="code -r ~/Public/xudong/sftp_vagrant"
@@ -289,19 +296,11 @@ alias vimrc="subl ~/.vimrc"
 alias hosts="subl /etc/hosts"
 
 # for simple file
-alias hi.php="subl ~/Public/Xudong/hi.php"
-alias hi.md="subl ~/Public/Xudong/hi.md"
-alias hi.html="subl ~/Public/Xudong/hi.html"
-alias hi.sql="subl ~/Public/Xudong/hi.sql"
-alias hi.js="subl ~/Public/Xudong/hi.js"
-alias hi.bash="subl ~/Public/Xudong/hi.sh"
-alias hi.vue="subl ~/Public/Xudong/hi.vue"
-alias hi.ini="subl ~/Public/Xudong/hi.ini"
-alias hi.json="subl ~/Public/Xudong/hi.json"
+alias hi.run="subl ~/Public/Xudong/code_runner"
+alias hi="subl ~/Public/Xudong/code_runner"
 alias php.ini="subl /usr/local/etc/php"
 alias s.new="s --new-window"
 alias php71="/usr/bin/php"
-alias php73="/usr/local/bin/php"
 alias doc.laravel="subl ~/code/doc.Laraveldoc"
 alias doc.centos="subl ~/code/doc.Centos6"
 
@@ -315,7 +314,8 @@ alias mysql.down="echo 'a' | sudo /usr/local/mysql/support-files/mysql.server st
 
 
 #路径导航
-alias go_snippet="cd /Users/xudong7930/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Snippets"
+alias go.snippet="cd /Users/xudong7930/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Snippets && code ."
+alias s.snippet="cd /Users/xudong7930/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Snippets && code ."
 alias go.xd="cd  ~/Public/xudong && ls"
 alias go.down="cd ~/Downloads && ls"
 alias go.desk="cd ~/Desktop && ls"
@@ -361,6 +361,7 @@ alias dep_ready="deployer deploy ready"
 alias dep_product="deployer deploy product"
 
 # Homebrew: system package manager
+export HOMEBREW_NO_AUTO_UPDATE=true
 alias brew.update_self="brew update"
 alias brew.upgrade="brew upgrade"
 alias brew.search="brew search"
@@ -369,6 +370,7 @@ alias brew.remove="brew remove"
 alias brew.config="brew config"
 alias brew.clear="brew cleanup"
 alias brew.list="brew list"
+alias brew.list_tree="brew deps --installed --tree"
 alias brew.outdated="brew outdated"
 alias brew.service="brew services list"
 
@@ -389,8 +391,8 @@ alias nginx.up="nginx -t && brew services start nginx"
 alias nginx.reload="nginx -t && nginx -s reload"
 alias nginx.down="nginx -t && brew services stop nginx"
 alias nginx.conf="/usr/local/bin/subl /usr/local/etc/nginx/servers/"
-alias dev.up="nginx.up && phpfpm.up && mysql.up"
-alias dev.down="nginx.down && phpfpm.down && mysql.down"
+alias dev.up="nginx.up && php56.up && mysql.up"
+alias dev.down="nginx.down && php56.down && mysql.down"
 
 alias how_to_use="/usr/local/bin/tldr -p=osx"
 
@@ -413,7 +415,6 @@ alias envoy_init="envoy init"
 alias envoy_list="envoy tasks"
 alias envoy_run="envoy run"
 
-
 # composer & brew & path
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
@@ -421,3 +422,17 @@ export PATH="/usr/local/sbin:$PATH"
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# 2019年09月02日14:16:13
+alias screen.list="screen -ls"
+alias screen.new="screen -S "
+alias screen.go="screen -r "
+
+# php 版本切换
+alias php.version_5.6="brew unlink php && brew link --force --overwrite php@5.6"
+alias php.version_7.3="brew unlink php@5.6 && brew link --force --overwrite php"
+
+# 2019年09月23日09:57:18
+alias php56.up="brew services start php@5.6"
+alias php56.down="brew services stop php@5.6"
+alias php56.reup="brew services restart php@5.6"

@@ -7,3 +7,12 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/p
 git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
 
 echo 'all job has done'
+
+
+## 使用
+```
+#升级
+upgrade_oh_my_zsh
+
+
+```

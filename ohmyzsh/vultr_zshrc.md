@@ -107,7 +107,6 @@ alias l='ls -CF'
 alias tailf='tail -20f'
 alias cp="cp -i"
 alias cls="clear"
-
 alias port="netstat -nltp"
 
 alias zshrc="vim ~/.zshrc"
@@ -146,3 +145,13 @@ alias php.down="rc-service php-fpm7 stop"
 alias redis.up="rc-service redis start"
 alias redis.reup="rc-service redis restart"
 alias redis.down="rc-service redis stop"
+
+# ps.
+alias ps="ps -aux"
+alias ps.search="ps -auxwf | grep -B8"
+alias ps.tree="ps -auxwf"
+
+# docker
+alias dk="docker"
+alias dk.version="docker version"
+alias dk.container="docker exec -it"
