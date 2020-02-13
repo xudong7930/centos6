@@ -61,7 +61,6 @@ set autoread "自动检测文件更改"
 set autowrite "自动写入"
 set laststatus=2 "启动状态栏显示"
 set linespace=16 "设置行高"
-set nocp "使用vim而非vi"
 set paste "粘贴模式"
 set cindent "c/c++自动缩进"
 
