@@ -1,6 +1,9 @@
 youtube-dl下载工具
 =================
 
+# install
+sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+sudo chmod a+rx /usr/local/bin/youtube-dl
 
 ## 常规命令
 > youtube-dl --update  //升级

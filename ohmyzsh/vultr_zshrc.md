@@ -130,21 +130,21 @@ alias pat="php artisan tinker"
 alias pam="php artisan migrate";
 
 # phpfpm,nginx,redis,mysql,ssh
-alias nginx.up="rc-service nginx start"
-alias nginx.reup="rc-service nginx restart"
-alias nginx.down="rc-service nginx stop"
+alias nginx.up="systemctl start nginx.service"
+alias nginx.reup="systemctl restart nginx.service"
+alias nginx.down="systemctl stop nginx.service"
 
-alias ssh.up="rc-service sshd start"
-alias ssh.reup="rc-service sshd restart"
-alias ssh.down="rc-service sshd stop"
+alias ssh.up="systemctl start sshd.service"
+alias ssh.reup="systemctl restart sshd.service"
+alias ssh.down="systemctl stop sshd.service"
 
-alias php.up="rc-service php-fpm7 start"
-alias php.reup="rc-service php-fpm7 restart"
-alias php.down="rc-service php-fpm7 stop"
+alias php.up="systemctl start php-fpm.service"
+alias php.reup="systemctl restart php-fpm.service"
+alias php.down="systemctl stop php-fpm.service"
 
-alias redis.up="rc-service redis start"
-alias redis.reup="rc-service redis restart"
-alias redis.down="rc-service redis stop"
+alias mysql.up="systemctl start mysqld.service"
+alias mysql.reup="systemctl restart mysqld.service"
+alias mysql.down="systemctl stop mysqld.service"
 
 # ps.
 alias ps="ps -aux"
