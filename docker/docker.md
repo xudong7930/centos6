@@ -1,6 +1,9 @@
 Docker
 ======
 
+docker exec -it php74-fpm bash
+
+
 ## CentOS7安装Docker
 > curl -sSL https://get.docker.com/ | sh
 
@@ -13,7 +16,6 @@ Docker
 systemctl restart docker.service
 systemctl stop docker.service
 systemctl status docker.service
-
 
 # 镜像Image
 * docker search centos "搜索镜像"

@@ -2,7 +2,7 @@ centos免密登陆
 ============
 
 ## 1.在PC/MAC上生成密钥
-> ssh-keygen -b 4096 -t rsa 
+> ssh-keygen -b 1024 -t rsa 
 
 ## 2.传到远程服务器中
 - 假设生成的文件在~/.ssh目录下

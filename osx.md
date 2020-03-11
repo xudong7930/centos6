@@ -1,6 +1,13 @@
 OSX 命令行
 =========
 
+# bogon 
+```
+sudo hostname your-desired-host-name
+sudo scutil --set LocalHostName $(hostname)
+sudo scutil --set HostName $(hostname)
+```
+
 # 命令行APP
 json格式化: jq
 进程查看: htop
