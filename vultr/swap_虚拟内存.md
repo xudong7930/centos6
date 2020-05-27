@@ -6,7 +6,7 @@
 dd if=/dev/zero of=/var/swap_1g bs=1024 count=1024000
 mkswap /var/swap_1g
 mkswap -f /var/swap_1g
-chmod 0644 /var/swap_1g
+chmod 0600 /var/swap_1g
 swapon /var/swap_1g
 ```
 

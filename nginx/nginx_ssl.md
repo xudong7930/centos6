@@ -16,12 +16,16 @@ Nginx使用免费的SSL
 
 	#创建CSR文件
 	openssl genrsa 4096 > domain.key
-	openssl req -new -sha256 -key domain.key -subj "/" -reqexts SAN -config <(cat /etc/pki/tls/openssl.cnf <(printf "[SAN]\nsubjectAltName=DNS:yoursite.com,DNS:www.yoursite.com")) > domain.csr
 
+	#2个域名
+	openssl req -new -sha256 -key domain.key -subj "/" -reqexts SAN -config <(cat /etc/pki/tls/openssl.cnf <(printf "[SAN]\nsubjectAltName=DNS:health-woman.com,DNS:www.health-woman.com")) > domain.csr
+		
+	#单个域名
+	openssl req -new -sha256 -key domain.key -subj "/CN=zufang.f3322.net" > domain.csr
 
 ## 2.证明你拥有该域名 ##
 	#创建目录
-	mkdir -p /var/www/challenges
+	mkdir -p /var/www/acme-challenges
 	
 	#编辑nginx.conf文件
 	server {
@@ -46,7 +50,7 @@ Nginx使用免费的SSL
 	chmod +x acme_tiny.py
 
 	#生成signed.crt文件
-	python acme_tiny.py --account-key ./account.key --csr ./domain.csr --acme-dir /var/www/challenges/ > ./signed.crt
+	python acme_tiny.py --account-key ./account.key --csr ./domain.csr --acme-dir /var/www/acme-challenge/ > ./signed.crt
 
 
 ## 4.安装证书 ##
@@ -68,8 +72,8 @@ Nginx使用免费的SSL
 		add_header X-Frame-Options "DENY";
 
 	  	ssl on;
-	  	ssl_certificate /path/to/chained.pem;
-	  	ssl_certificate_key /path/to/domain.key;
+	  	ssl_certificate /root/acme-tiny/chained.pem;
+	  	ssl_certificate_key /root/acme-tiny/domain.key;
 	  	ssl_session_timeout 5m;
 	  	ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 	  	ssl_ciphers ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA:ECDHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA;
