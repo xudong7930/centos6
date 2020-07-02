@@ -50,7 +50,7 @@ Nginx使用免费的SSL
 	chmod +x acme_tiny.py
 
 	#生成signed.crt文件
-	python acme_tiny.py --account-key ./account.key --csr ./domain.csr --acme-dir /var/www/acme-challenge/ > ./signed.crt
+	python acme_tiny.py --account-key ./account.key --csr ./domain.csr --acme-dir /var/www/acme-challenges/ > ./signed.crt
 
 
 ## 4.安装证书 ##
