@@ -1,23 +1,31 @@
 Docker
 ======
 
-docker exec -it php74-fpm bash
 
 
-## CentOS7安装Docker
-> curl -sSL https://get.docker.com/ | sh
+### 安装
+
+```shell
+# 安装
+curl -sSL https://get.docker.com/ | sh
+
+#服务的启动，停止，重启
+systemctl start docker.service
+systemctl stop docker.service
+```
+
+
 
 运行一个nginx
-> docker run -d -rm -p 80:80 --name webserver nginx "运行一个webserver"  
+
+> docker run -d --rm -p 80:80 --name webserver nginx "运行一个webserver"  
 > docker stop webserver "停止webserver"  
 > docker rm webserver "删除webserver"  
 
-重启服务:
-systemctl restart docker.service
-systemctl stop docker.service
-systemctl status docker.service
 
-# 镜像Image
+
+### 镜像Image
+
 * docker search centos "搜索镜像"
 * docker pull centos:lastst "下载最新Ubuntu"    
 * docker run -it centos bash "启用Bash交互式操作"  
@@ -30,16 +38,40 @@ systemctl status docker.service
 * docker rmi image_id|image_name  "删除镜像的标签,当没有标签指向这个镜像的时候,则删除镜像"
 
 
-### 理解镜像构成
-* docker run -d -p 80:80 --name webserver nginx
-* docker exec -it webserver bash "进入webserver的shell交互"
-* echo 'hi,docker' > /usr/share/nginx/html/index.html "修改nginx首页"
-* exit "退出容器"
-* docker diff webserver "查看你对镜像的修改"
-* docker commit --author "xudong7930" --message "修改了首页" webserver nginx:v2 "提交你的修改,保存为新的镜像"
-* docker images "查看镜像"
-* docker history nginx:v2 "查看镜像的修改历史"
-* docker run --name webserver2 -d -p 81:80 nginx:v2 "运行新的镜像"
+
+对镜像进行修改和提交(docker commit)
+
+```shell
+# 1.创建一个容器
+docker run -d -p 80:80 --name webserver nginx
+
+# 2.进入容器的shell交互
+docker exec -it webserver bash 
+
+# 3.对容器进行修改
+echo 'hi,docker' > /usr/share/nginx/html/index.html
+
+# 4.退出容器
+exit
+
+# 5.查看你对镜像的修改
+docker diff webserver
+
+# 6.提交你的修改,保存为新的镜像
+# docker commit --author author_name --message commit_message container_name tag_name:tag_version
+docker commit --author "xudong7930" --message "修改了首页" webserver nginx:v2 
+
+# 7.查看镜像发现有新的镜像
+docker images
+
+# 8.查看镜像的修改历史
+docker history nginx:v2
+
+# 9.运行新的镜像
+docker run --name webserver2 --rm -d -p 81:80 nginx:v2
+```
+
+
 
 
 ### 使用Dockerfile定制镜像, 实例
@@ -63,7 +95,24 @@ systemctl status docker.service
 > docker load -i alpine-latest.tar.gz "从文件中导入镜像"  
 
 
-# 容器Container
+
+其它操作
+
+```shell
+# 创建一个指向source_image的新的tag
+docker tag source_image:tag target_image:tag
+
+
+```
+
+
+
+
+
+
+
+### 容器Container
+
 > docker ps "查看正在运行的容器"  
 > docker ps -a "所有容器"  
 > docker ps -l "最新创建的容器"  
@@ -72,7 +121,6 @@ systemctl status docker.service
 > docekr run -d ubuntu "后台运行容器"  
 > docker start|stop|restart 容器名称  
 > docker stop $(docker ps -a -q)"停止所有的容器"  
-> docker exec -it container_name /bin/bash "进入容器中操作"  
 > docker export conatainer_id | gzip > ubuntu.tar.gz "导出容器"  
 > cat ubuntu.tar.gz | docker import - xudong7930/ubuntu:v2 "导入容器"  
 > docker import http://domain.com/ubuntu.tar.gz xudong7930/ubuntu:v2  
@@ -82,7 +130,76 @@ systemctl status docker.service
 > docker rename old_container_name new_container_name "容器重命名"
 
 
+
+进入容器	
+
+```shell
+# 方式1：进入容器后开启一个新的终端（常用）
+docker exec -it container_name /bin/bash
+# 方式2: 进入正在执行的终端,不开启新的进程
+docker attach container_name
+```
+
+
+
+退出容器
+
+```shell
+# 方式1: 在容器中
+exit
+
+# 方式2: 快捷方式
+ctrl + p + q
+
+```
+
+
+
+主机和容器的文件拷贝(无需容器启动)
+
+```shell
+#方式1：容器中的文件 拷贝到 主机
+docker cp container_name:/usr/share/nginx/html/index.html ./
+
+#方式2: 主机文件 拷贝到 容器
+docker cp ./file.zip container_name:/root/ 
+```
+
+
+
+容器相关的命令:
+
+```shell
+# 暂停,取消暂停容器
+docker pause|unpause container_name
+
+# 查看容器运行的进程
+docker top container_name
+
+#显示活动容器的资源占用状态
+docker stats
+
+# 查看docker版本
+docker version
+
+# 查看docker统计信息
+docker info
+
+# 查看容器详情
+docker inspect container_name
+
+# 显示指定容器的端口映射
+docker port container_name
+
+
+```
+
+
+
+
+
 ## Docker Hub仓库
+
 * https://hub.docker.com xudong7930/abc123 "账号密码"
 * docker login "登录到DockerHub"
 * docker logout "退出登录"
@@ -99,25 +216,13 @@ systemctl status docker.service
 
 # Docker网络
 > docker run -d -p 8080:80 xudong7930/webapp "应用内部端口80映射到8080"  
-> docker port 应用名称 "查看端口映射配置"  
-> docker logs -f 镜像名称 "查看应用的日志"  
+> docker port  container_name "查看端口映射配置"  
+> docker logs -f image_name "查看应用的日志"  
 
 ## 容器互联
 > docker run -d --name db xudong7930/msyql "数据库"  
 > docker run -d -P --name webapp --link db:alias_db xudong7930/webapp "定义容器的名称, 和db容器互联, db:alias_db是 name:alias, 在webapp中可以使用alias_db这个别名通讯"  
-> docker inspect container "查看容器的详细信息"  
+> docker inspect container "查看容器信息"  
 
 
-## 其他没用的命令
-* docker pause container_name "暂停容器"
-* docker unpause container_name "取消暂停容器"
-* docker version "查看docker版本"
-* docker info "查看docker的统计信息"
-* docker top container_name "查看指定容器运行的进程"
-* docker tag source_image:tag target_image:tag "创建一个指向source_image的新的tag"
-* docker push xudong7930/hellonginx "将本地镜像推送到Docker Hub"
-* docker stats "显示活动容器的资源占用状态"
-* docker port container_name "显示指定容器的端口映射"
-* docker create --name xuergou_nginx nginx:lastest "创建一个容器,有很多的参数,没加上"
-* dk cp ergou_nginx:/usr/share/nginx/html/index.html ./ "docker容器与本地的文件复制"
 
