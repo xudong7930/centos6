@@ -127,7 +127,6 @@ docker tag source_image:tag target_image:tag
 > docker rm conatainer_id "删除容器"  
 > docker rm -f conatainer_id "强制删除容器"  
 > docker rm $(docker ps -a -q)"清理所有容器"
-> docker rename old_container_name new_container_name "容器重命名"
 
 
 
@@ -191,7 +190,8 @@ docker inspect container_name
 # 显示指定容器的端口映射
 docker port container_name
 
-
+# 容器重命名
+docker rename old_container_name new_container_name
 ```
 
 

@@ -7,6 +7,7 @@ touch /usr/local/mongodb/mongo.conf
 
 ## download
 docker pull mongo:latest
+docker pull mongo:3.6.20
 
 ## create container
 docker run -d --rm -p 27017:27017 --name mongond -v /usr/local/somedocker/mongo/data:/data/db mongo:latest

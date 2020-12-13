@@ -5,4 +5,4 @@
 * docker pull nginx
 
 ## 启动
-* docker run -d --name nginxnd -p 80:80 -v /usr/local/www:/usr/local/www -v /usr/local/somedocker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro nginx:latest nginx-debug -g "daemon off;"
+docker run -d --name app_nginx -p 80:80 -p 8080:8080 -v /Users/xudong7930/code:/usr/share/nginx/html -v /Users/xudong7930/docker_data/nginx118/logs:/var/log/nginx nginx:1.18.0
