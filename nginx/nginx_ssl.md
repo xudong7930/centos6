@@ -95,16 +95,19 @@ Nginx使用免费的SSL
 恭喜！你的网站已经使用上了HTTPS。 但[Let's Encrypt官网](https://letsencrypt.org/) 证书有效期只有90天, 所以需要定期更新
 
 新建文件**update_cert.sh**
-	
-	#!/usr/bin/sh
-	
-	python /path/to/acme_tiny.py --account-key /path/to/account.key --csr /path/to/domain.csr --acme-dir /var/www/challenges/ > /tmp/signed.crt || exit
-	
-	#下载
-	wget -O - https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem > intermediate.pem
-	
-	#合并
-	cat /tmp/signed.crt intermediate.pem > /path/to/chained.pem
-	
-	#重启
-	service nginx reload
+
+```bash	
+#!/usr/bin/sh
+
+python /root/acme-tiny/acme_tiny.py --account-key /root/acme-tiny/account.key --csr /root/acme-tiny/domain.csr --acme-dir /usr/share/nginx/html/acme-challenges/ > /root/acme-tiny/signed.crt || exit
+
+#下载
+cd /tmp && wget -O - https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem > intermediate.pem
+
+#合并
+cat /root/acme-tiny/signed.crt /tmp/intermediate.pem > /root/acme-tiny/chained.pem
+
+#重启
+service nginx reload
+service trojan reload
+```
