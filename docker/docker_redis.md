@@ -34,3 +34,6 @@ docker pull redis:5.0.9
 docker run -d --name app_redis -p 6379:6379 -v /Users/xd/xudong/docker/redis/redis.conf:/etc/redis/redis.conf -v /Users/xd/xudong/docker/redis/data:/data redis:5.0.9
 
 ```
+
+<!-- redis集群 -->
+docker pull grokzen/redis-cluster:5.0.10
