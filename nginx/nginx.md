@@ -1,3 +1,10 @@
+nginx是一个高性能的http和反向代理服务器。其特点是内存占用少，支持高并发，高负载。
+
+
+
+
+
+
 #IP访问排序
 awk '{print $7}' /usr/local/nginx/logs/access.log | sort |uniq -c | sort -rn | head -n 10
 
@@ -18,5 +25,4 @@ awk '{print $8}' /usr/local/nginx/logs/error.log | sort |uniq -c | sort -rn | he
 ./nginx -s quit 安全退出
 ./nginx -s reload 重新加载配置文件
 ./nginx -t 检查文件语法
-
-
+./nginx -v
