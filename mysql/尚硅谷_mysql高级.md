@@ -893,6 +893,7 @@ binlog-ignore-db=performance_schema
 
 
 slave配置：
+server-id=2
 log-bin=mysqlbin
 log-err=mysqlerr
 ```
@@ -924,4 +925,6 @@ show slave status\G
 # 启动和停止
 start slave;
 stop slave;
+
+第5步：在master上添加数据库，创建表，插入数据，将会同步的到slave上
 ``` 
