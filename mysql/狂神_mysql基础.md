@@ -5,16 +5,16 @@
 mysql -u root -p123456
 
 # 刷新权限
-mysql> flush privileges;
+flush privileges;
 
 # 查看当前库的所有表
-mysql> show tables;
+show tables;
 
 # 查看表结构
-mysql> desc students;
+desc students;
 
 # 退出sql
-mysql> exit;
+exit;
 ```
 
 
@@ -24,36 +24,27 @@ mysql> exit;
 
 ```sql
 # 显示所有数据库
-mysql> show databases;
-
+show databases;
 
 # 创建数据库
-mysql> create database if not exists project_a;
-Query OK, 1 row affected (0.02 sec)
-
+create database if not exists project_a;
 
 # 删除数据库
-mysql> drop database if exists departments;
-Query OK, 0 rows affected, 1 warning (0.00 sec)
-
+drop database if exists departments;
 
 # 选择数据库
-mysql> use test;
-Reading table information for completion of table and column names
-You can turn off this feature to get a quicker startup with -A
-
-Database changed
+use test;
 ```
 
 
 ## 数据库列类型
 
 数值:
-  * tinyint 十分小的数据，1个字节
+  * tinyint 十分小的数据，1个字节=8位
   * smallint 较小的数据,2个字节
   * int 标准的数据，4个字节
   * bigint 较大的数据, 8个字节
- 
+
   * float  浮点数，4个字节
   * double 浮点数，8个字节
 
@@ -109,16 +100,15 @@ CREATE TABLE IF NOT EXISTS `students` (
 
 
 # 查看建表语句
-mysql> show create table students \G;
+show create table students \G;
 
 
 # 表重命名
-mysql> alter table projects rename as projects2;
-Query OK, 0 rows affected (0.03 sec)
+alter table projects rename as projects2;
 
 
 # 表添加字段
-mysql> alter table `projects2` add email varchar(60) not null COMMENT "email";
+alter table `projects2` add email varchar(60) not null COMMENT "email";
 
 
 # 表字段重命名
@@ -127,7 +117,6 @@ alter table `projects2` change `email` `email2` varchar(30);
 
 # 表修改字段属性
 alter table `projects2` modify email varchar(30) not null comment "emails";
-
 
 # 删除表 
 drop table if exists `projects2`;
@@ -138,7 +127,6 @@ InnoDB: 支持事务，数据行锁定，支持外键约束，不支持全文索
 
 MyISAM: 不支持事务，不支持行锁定，不支持外键约束，支持全文索引，表空间较小
   * 在物理路径中 *.frm是表结构文件 *.myd是数据文件 *.myi是索引文件
-
 
 
 
@@ -220,7 +208,8 @@ select `name`, `grade_id` +1 as 'new_grade' from `students`;
 # 模糊查询：like %表示0到任意个字符，_表示1个字符
 select * from students where name like 'teddy%' and pwd like 'abc___';
 
-select * from students where name is not null; # is null, is not null
+# is null, is not null
+select * from students where name is not null;
 ```
 
 # 联合查询 inner join，left join, right join
@@ -324,15 +313,26 @@ select md5('123');
 
 # mysql 事务
 
-事务正确执行的4个要素：
+定义： 事务是一组不可分割执行的sql语句集合，如果有必要，可以撤销。
+
+事务的基本要素：
 * 原子性（要么都成功，要么都失败），
 * 一致性（针对一个事务操作前后的状态一致）
 * 隔离性（针对多个用户同时操作，排除其它事务对本次事务的影响）
 * 持久性（事务结束后数据不随着外界原因而丢失）
 
-脏读：指一个事务读取了另一个事务未提及的数据
-不可重复读：指在一个事务内读取表中的某一行数据，多次读取的结果不同。
-虚读：指在一个事务内读取到了别的事务插入的数据，导致前后读取不一致。
+事务的隔离级别：
+* 读未提交（read-uncommitted）
+* 不可重复读（read-committed）
+* 可重复读（repeatable-read）（默认）
+* 串行化（serializable）
+
+查询当前事务的隔离级别： select @@tx_ioslation;
+
+事务并发带来的问题:
+* 脏读：指一个事务读取了另一个事务未提交的数据
+* 不可重复读：指在一个事务内读取表中的某一行数据，多次读取的结果不同。
+* 幻读：指在一个事务内读取到了别的事务插入的数据，导致前后读取不一致。
 
 ```sql
 
@@ -376,7 +376,7 @@ mysql索引（index）是帮助mysql高效获取数据的数据结构。
 索引的原则：
 * 索引不是越多越好
 * 不对经常变动的数据加索引
-* 小数据了不需要加索引
+* 小数据量不需要加索引
 * 索引一般创建常用的在查询的字段上
 
 索引的算法类型:
@@ -479,7 +479,7 @@ grant all privileges on *.* to `sbjxd`;
 grant all privileges on *.* to `teddy` with grant option;
 flush privileges;
 
-show grants for `sbjxd`@`%`;; #查看权限
+show grants for `sbjxd`@`%`; #查看权限
 
 # 撤销权限
 REVOKE all PRIVILEGES on *.* from teddy;
@@ -501,9 +501,9 @@ drop user `teddy`;
 命令行导出: 
 
 ```bash
-mysqldump -hlocalhost -uroot -p123456 test category > ./category.sql #导test库中的category表
+mysqldump -h localhost -uroot -p123456 test category > ./category.sql #导test库中的category表
 
-mysqldump -hlocalhost -uroot -p123456 test category user > ./category.sql #导test库中的category,user表
+mysqldump -h localhost -uroot -p123456 test category user > ./category.sql #导test库中的category,user表
 ```
 
 mysql中导入:

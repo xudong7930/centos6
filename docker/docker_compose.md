@@ -2,6 +2,7 @@ docker compose
 ==============
 
 Define and run multi-container applications with Docker.
+使用docker定义并运行多容器应用程序。
 [Docker Compose项目](https://github.com/docker/compose)
 
 ## 安装

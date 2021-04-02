@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css style</title>
+  <style>
+    /* css选择器 */
+    p {
+      font-weight: bold;
+      color: black;
+    }
+
+    /* 按id选择元素 */
+    #ptag {
+      color: blue;
+    }
+
+    /* 按class选择元素 */
+    .ptag {
+      color: red;
+    }
+
+    p.ptag {
+      color: orange;
+    }
+
+    /* 复合选择器 */
+    h1, span {
+      color: rgb(187, 32, 58);
+    }
+
+    /* 父子选择器 */
+    .page1 > p {
+      font-size: 34px;
+      color:greenyellow;
+    }
+
+    /* 后代选择器: 所有子元素 */
+    .page1 a {
+      text-decoration: none;
+    }
+
+    /* 下一个临近一个元素 */
+    .linka + p {
+      text-indent: 5%;
+    }
+
+    /* 下一个所有同级元素 */
+    li.one ~ li {
+      font-size: 20px;
+    }
+
+    /* 属性选择器 */
+    p[title = "reddog"] {
+      color: blue;
+    }
+
+    /* 以redog开头的元素 */
+    p[title ^= "redog"] { 
+      font-size:x-large;
+    }
+
+    /* 以redog结尾的元素 */
+    p[title $= "redog"] { 
+      font-weight: bolder;
+    }
+
+    /* 包含dog的元素 */
+    p[title *= "dog"] {
+      text-indent: 20%;
+    }
+
+    /* 
+      伪类选择器（不存在的类，特殊的类）：  
+        冒号开头
+        :first-child
+        :last-child
+        :nth-child(1,n,2n,2n+1)
+
+
+        :first-of-type 同类型的第一个元素
+        :last-of-type 同类型的最后一个元素
+        :not(:nth-child(3))
+    */
+    ul.pre_test > li:not(:nth-child(3)) {
+      color:red;
+    }
+
+
+    /* :link 未访问  */
+    .link-test > a:link {
+      color: purple;
+    }
+
+    /* :visited 访问过的 只能改颜色*/
+    .link-test > a:visited {
+      color: orange;
+    }
+
+    /* :hover 覆盖 */
+    .link-test a:hover {
+      color:rgb(187, 32, 58);
+    }
+
+    /* 鼠标点击的时候 */
+    .link-test a:active {
+      color: yellow;
+    }
+
+
+    /* 
+      伪元素：表示页面中一些特殊的真实不存在的元素
+        两个冒号开头 ::
+        ::first-letter
+        ::first-line
+        ::selection 选择文字
+        ::before 元素开始的位置
+        ::after 元素结束的位置
+          必须有content属性
+     */
+    .predo-el::first-letter {
+      font-size: 50px;
+    }
+
+    .predo-el::before {
+      content: " fffff";
+      border: 1px solid red;
+    }
+
+
+    /* 
+      css继承 ：
+        继承的设计是为了方便开发，利用继承可以将一些通用的样式设置到祖先元素上，
+        只需设置一次，所有元素都具有该样式
+        不是所有的样式都会被继承，比如背景相关，布局相关的不会被继承
+    */
+
+  </style>
+</head>
+<body>
+  <!-- 
+    css:
+      - 层叠样式
+      - 网页是一个多层的结构，通过css为每一层设置样式，人眼所见最上边的一层
+   -->
+
+  <!-- 行内样式 -->
+  <p style="font: 2em sans-serif;color:rgb(206, 58, 21)">
+    CSS3的语法是建立在CSS原先版本基础上的，它允许使用者在标签中指定特定的HTML元素而不必使用多余的class、ID或JavaScript。CSS选择器中的大部分并不是在CSS3中新添加的，只是在之前的版本中没有得到广泛的应用。
+  </p>
+  <p id="ptag">
+    网页是一个多层的结构，通过css为每一层设置样式
+  </p>
+
+  <p class="ptag">
+    这里的山路十八万
+  </p>
+
+  <h1>test</h1>
+  <span>test2</span>
+
+
+  <div class="page1">
+    <h1>我是mt</h1>
+    <div>
+      <a href="#">
+        <span>ok</span>
+      </a>
+    </div>
+    <p>国政府对外招标：逆向工程B-2隐形轰炸机的关键零件</p>
+    <a class="linka" href="#">not ok</a>
+    <p class="p2">隐形轰炸机的关键零件</p>
+  </div>
+
+  <ul>
+    <li class="one">one</li>
+    <li>two</li>
+    <li>three</li>
+    <dd>
+      <li>dddd</li>
+    </dd>
+  </ul>
+
+  <p class="choose_attr" title="reddog">
+    600年前的荷兰人为了保证安全
+  </p>
+
+  <ul class="pre_test">
+    <li>1111</li>
+    <li>2222</li>
+    <li>3333</li>
+    <li>4444</li>
+    <li>5555</li>
+  </ul>
+
+  <div class="link-test">
+    <a href="#">link1</a>
+  </div>
+
+  <div class="predo-el">
+    本项目是对B-2负荷热交换器的核心进行逆向工程，开发拆卸过程以去除有缺陷的核心，开发堆叠，真空钎焊和焊接工艺以制造新的热交换器核心，并开发焊接工艺以在现有的B-2负载热交换器上安装新的芯子。
+    要求包括对B-2负载热交换器的重芯工艺进行逆向工程。
+    B‐2负载热交换器(NSN 1660‐01‐350‐8209FW)使用空气和乙二醇水(EGW)液体为冷却系统产生冷空气
+  </div>
+</body>
+</html>

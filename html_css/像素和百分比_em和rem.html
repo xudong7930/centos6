@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: orange;
+    }
+
+    .box2 {
+      width:50%;
+      height:50%;
+      background-color: green;
+    }
+    /* 
+    像素：
+      * 实际上是屏幕上的一个小点点
+      * 不同屏幕的像素大小不同，像素越小屏幕显示效果越清晰
+
+    百分比：
+      * 
+      * 
+
+
+    em:
+      * em是相对于元素的字体大小来计算的
+      * 1em = 1font-size, 网页字体大小默认16px，所以1em=16px
+      * em根据字体大小的改变而改变
+    
+    
+    rem:
+      * rem是相对于root根元素（html）字体大小计算的
+     */
+
+  
+      .box3 {
+        font-size: 30px;
+        width:10em; /*  宽度=30px*10 = 300px; */
+        height:10em;
+        background-color: purple;
+      }
+
+      html {
+        font-size: 30px;
+      }
+      .box4 {
+        /* 相对html元素字体大小来算的 */
+        width:10rem; 
+        height:10rem;
+        background-color: #ccc;
+      }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="box2"></div>
+  </div>
+
+  <div class="box3"></div>
+  <div class="box4"></div>
+</body>
+</html>

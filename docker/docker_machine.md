@@ -2,7 +2,7 @@ docker machine
 ==============
 
 Create and manage machines running Docker.
-
+使用docker-machine在所有工作台上创建docker容器
 [Docker Machine](https://github.com/docker/machine/releases)
 
 ## 常用命令

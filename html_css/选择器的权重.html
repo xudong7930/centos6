@@ -1,0 +1,29 @@
+<style>
+* {
+  font-weight: bold;
+}
+
+p {
+  color: red !important;
+}
+
+.red {
+  color: blue;
+}
+
+/* 
+css选择器的权重：
+  1.行内样式 1000
+  2.id选择器 100
+  3.类 和 伪类选择器 10
+  4.元素选择器 1
+  5.通配符（*）选择器  0
+  6.继承的样式   无优先级
+
+  * 如果优先级一致，那么后边的覆盖前面的样式
+
+  * 在样式后面添加 !important; 该样式获取最高优先级
+ */
+</style>
+
+<p class="red" style="color:yellow">this is a word</p>

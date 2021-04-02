@@ -3,8 +3,7 @@
 
 ```sql
 # 查看字符集
-mysql> show variables like "%char%";
-
+show variables like "%char%";
 ```
 
 ## mysql的配置文件
@@ -49,7 +48,7 @@ show variables like '%storage_engine%';
 
 机读sql：
 
-
+```sql
 并集：
 select * from a inner join b on a.id=b.id;  
 
@@ -75,9 +74,10 @@ select * from a right join b on a.id=b.id;
 select * from a left join b on a.id = b.id where b.id is null
 union
 select * from a right join b on a.id=b.id where a.id is null;
+```
 
 * 索引（index）
-mysql索引是帮助mysql高效获取数据的数据结构。
+定义: mysql索引是帮助mysql高效获取数据的数据结构。
 
 用于解决where后的条件，order by后的条件
 
@@ -86,7 +86,10 @@ mysql索引是帮助mysql高效获取数据的数据结构。
 索引本身也很大，不会全部保存在内存中，因此索引一般以文件的形式保存在磁盘上
 
 
-优点：1.提高了数据的查询效率，降低磁盘IO 2.降低数据排序的成本，降低了cpu的消耗
+优点：
+  1.提高了数据的查询效率，降低磁盘IO 
+  2.降低数据排序的成本，降低了cpu的消耗
+
 缺点：
   1.索引也是一张保存了主键与索引字段并指向是体表的记录，占用空间 
   2.索引提高了查询速度，也降低了表更新的速度
@@ -96,7 +99,7 @@ mysql索引是帮助mysql高效获取数据的数据结构。
   * 单列索引：一个表可以又多个单列索引
   * 多列索引：包含多列的索引
   * 唯一索引：索引值必须唯一，但允许值为空
-  * 
+  * 主键索引，全文索引
 
 ```sql
 # 创建普通索引
@@ -122,7 +125,7 @@ show index from table_name;
 
 索引结构分类：
   * Btree（大部分索引类型使用此算法）
-    见图片：尚学堂—b+tree查找数据的方式.png
+      见图片：尚学堂—b+tree查找数据的方式.png
   * Hash
   * Fulltext
   * Spatial（空间索引）
@@ -151,7 +154,7 @@ show index from table_name;
   磁盘io瓶颈：装入数据量远大于可用内存的时候
   服务器硬件性能瓶颈：htop
 
-3.explai
+3.explain
 使用explain可以模拟优化器执行sql查询语句，从而知道mysql是如何处理你的sql语句的。
 
 mysql> explain select * from app_user where name="9999"\G;
@@ -173,7 +176,7 @@ mysql> explain select * from app_user where name="9999"\G;
             * union：第二个select在union后，则标记为union；union包含在from子句的查询中，外层的select标记为derived
             * union result：union查询，两个结果合并的这种标记为union result
 
-        table(表名称): app_user
+         table(表名称): app_user
          type(访问类型): ref
             #表示访问类型列，显示查询使用列哪种类型：
               *system（最好） > const > eq_ref > ref > range(良好) > index > all(最差，表示全表扫描)
@@ -404,7 +407,6 @@ mysql> show variables like "%slow_query_log%";
 
 #sql中开启,只针对当前数据库生效
 mysql> set global slow_query_log=1;
-Query OK, 0 rows affected (0.06 sec)
 
 #慢查询时间
 show variables like "%long_query_time%";

@@ -143,6 +143,8 @@ sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.serve
 ## 在当前目录下查找文件并删除
 > find . -type f -name '*.DS_Store' -ls -delete  
 
+> find / -mtime +30 -name "*.mp4" -exec rm -fr {} \;
+
 ## 重启/关机
 > sudo reboot  
 > sudo poweroff  
