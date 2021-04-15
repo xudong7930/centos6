@@ -35,3 +35,8 @@ There is a screen on:
 ## 技能
 * 启动一个初始状态断开的screen会话: screen -dmS neo dotnet /home/xudong/neo/neo-cli.dll /rpc /log
 * 连接该会话: screen -r neo
+
+
+## 退出
+
+> screen -S 8113.1751991 -X quit
