@@ -1,7 +1,28 @@
 Docker
 ======
 
+### 阿里云加速
 
+> 登陆阿里云查看加速地址： https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors
+
+> 查看docker镜像地址：
+> sudo docker info|grep "Registry Mirrors" -A 10
+
+
+```json
+{
+  "experimental": false,
+  "features": {
+    "buildkit": true
+  },
+  "registry-mirrors": [
+    "https://6l01pomd.mirror.aliyuncs.com",
+    "http://hub-mirror.c.163.com",
+    "https://mirror.ccs.tencentyun.com",
+    "https://docker.mirrors.ustc.edu.cn"
+  ]
+}
+```
 
 ### 安装
 
