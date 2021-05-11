@@ -1,0 +1,185 @@
+{
+    //========================================================
+    //  编辑器设置
+    //========================================================
+
+    // 关闭mini地图
+    "editor.minimap.enabled": false, 
+
+    // 字体大小
+    "editor.fontSize": 21, 
+
+    // 行高
+    "editor.lineHeight": 29, 
+
+    // 代码自动换行
+    "editor.wordWrap": "off",
+
+    //光标的宽度
+    "editor.cursorWidth": 3,  
+
+    // 光标闪动样式
+    "editor.cursorBlinking": "smooth",
+
+    // >= 是否连在一起
+    "editor.fontLigatures": true,
+    
+    // 显示标尺
+    "editor.rulers": [
+        // 120
+    ],
+
+    // 字体设置： "Monaco, 'Fira Code', Menlo", "Operator Mono", "JetBrains Mono"
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontWeight": "normal",
+
+    "editor.multiCursorModifier": "ctrlCmd",
+    
+    // 如何渲染空格
+    "editor.renderWhitespace": "none",
+
+    // 是否渲染控制字符
+    "editor.renderControlCharacters": false,
+
+    // 显示行号
+    "editor.lineNumbers": "on", 
+
+    // 总是显示代码折叠
+    "editor.showFoldingControls": "always",
+    
+    // 窗口标题
+    "window.title": "${activeEditorLong}${separator}${rootName}",
+
+    // 在新窗口打开文件夹
+    "window.openFoldersInNewWindow": "on",
+
+    // 在新窗口中打开文件
+    "window.openFilesInNewWindow": "on", 
+    
+
+    // 文件按类型排序
+    "explorer.sortOrder": "type",
+
+    // 文件删除是否确认
+    "explorer.confirmDelete": false, 
+
+    // 未保存的tab页高亮显示
+    "workbench.editor.highlightModifiedTabs": true,
+
+    // 文件删除的时候关闭文件
+    "workbench.editor.closeOnFileDelete": true, 
+
+    // 是否启用建议
+    "workbench.tips.enabled": false, 
+
+    // 文件目录间隔调整
+    "workbench.tree.indent": 12, 
+    
+    // 文件目录是否渲染引导线
+    "workbench.tree.renderIndentGuides": "none",
+
+    "workbench.view.alwaysShowHeaderActions": true,
+
+    // 预览快速打开文件
+    "workbench.editor.enablePreviewFromQuickOpen": false, 
+
+    // 是否显示文件预览
+    "workbench.editor.enablePreview": false, 
+
+    // 启动编辑器的时候
+    "workbench.startupEditor": "gettingStarted",
+
+    // 文件类型关联
+    "files.associations": {
+        "*.vue": "html",
+        ".env": "ini",
+        "*.blade.php": "php",
+        ".php": "php",
+        ".env.product": "ini"
+    },
+
+    // 是否显示面包屑导航
+    "breadcrumbs.enabled": false,
+    // "javascript.validate.enable" : false,
+    // "javascript.suggest.enabled": false,
+
+    "http.proxyAuthorization": "false",
+
+    "terminal.integrated.fontSize": 19,
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.cursorWidth": 2,
+    "terminal.integrated.cursorBlinking": true,
+
+    // git比较不同的时候，是否自动包裹
+    "diffEditor.wordWrap": "off",
+
+    // git比较不同的时候，是否忽略空白
+    "diffEditor.ignoreTrimWhitespace": false,
+
+    "php.suggest.basic": false,
+    "php.validate.enable": false,
+    "php.validate.executablePath": "/usr/bin/php",
+    
+    //========================================================
+    //  扩展设置
+    //========================================================
+
+
+    // eslint
+    "eslint.options": { //指定eslint配置文件位置
+        "extensions": [".js", ".vue"],
+        "configFile": ".eslintrc.js" //指定项目根目录中的eslint配置文件,
+    },
+    "eslint.validate": [
+        // "javascript",
+        // "javascriptreact",
+        // "vue-html",
+        // {
+        //     "language": "vue",
+        //     "autoFix": true
+        // },
+        // {
+        //     "language": "html",
+        //     "autoFix": true
+        // }
+    ],
+    "eslint.run": "onSave", // Exclude glob pattern while finding files
+
+    "namespaceResolver.showMessageOnStatusBar": false,
+    "namespaceResolver.autoSort": false,
+    "namespaceResolver.sortOnSave": false,
+    "namespaceResolver.sortAlphabetically": false,
+    "namespaceResolver.sortNatural": false,
+    "namespaceResolver.leadingSeparator": true,  
+    "namespaceResolver.highlightOnSave": false,  
+    "namespaceResolver.highlightOnOpen": false,
+
+
+    // php composer
+    "composerCompanion.enabled": true,
+    "composerCompanion.executablePath": "/usr/local/bin/composer.phar",
+    "composerCompanion.showScriptsInExplorer": true,
+    
+    // docker ext
+    "docker.commands.attach": "docker exec -it ${containerId} bash",
+
+    // 其他设置
+    "git.confirmSync": false,
+    "intelephense.maxMemory": 2048,
+    "references.preferredLocation": "view",// 查看文件引用的时候： view-打开新tab peek-显示model
+    
+    // extension: setting sync
+    "sync.gist": "10c2c9ede2d9a51d275cc944c073aa4d",
+    "sync.autoDownload": false,
+    "sync.autoUpload": false,
+    "sync.forceDownload": false,
+    "sync.forceUpload": false,
+    "sync.quietSync": false,
+    "sync.removeExtensions": true,
+    "sync.syncExtensions": true,
+    "workbench.colorTheme": "One Dark Pro",
+    "git.autofetch": true,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "workbench.iconTheme": "vs-minimal",
+    "workbench.editor.untitled.hint": "hidden"
+}
