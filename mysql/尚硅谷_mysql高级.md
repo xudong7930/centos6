@@ -159,7 +159,7 @@ show index from table_name;
 
 mysql> explain select * from app_user where name="9999"\G;
 *************************** 1. row ***************************
-           id(查询序号): 1 
+          id(查询序号): 1 
             #表示查询中执行select子句或操作表的顺序，
             多个id时候：
               * id相同则执行顺序由上到下
@@ -167,7 +167,7 @@ mysql> explain select * from app_user where name="9999"\G;
               * id相同，不同都有：值越大的先执行，然后按序执行
 
 
-  select_type(查询类型): SIMPLE
+          select_type(查询类型): SIMPLE
             #表示查询类型，用于区分普通查询，联合查询，子查询等复杂查询
             * simple： 简单的select查询，查询中不包含子查询和union
             * primary：如果查询中包含复杂的子部分，最外层则标记为primary·
@@ -199,7 +199,7 @@ mysql> explain select * from app_user where name="9999"\G;
               * all: 全表扫描的时候
                 EXPLAIN select * from runoob_tbl;
 
-possible_keys(可能用到的索引): index_name
+        possible_keys(可能用到的索引): index_name
             #指查询时可能用到的索引，一个或多个
 
           key(实际用到到索引): index_name

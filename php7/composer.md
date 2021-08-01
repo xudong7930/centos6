@@ -10,10 +10,12 @@ composer self-update
 
 # composer阿里云
 
-```s
+```
 #全局配置:
-composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
-composer config -g repos.packagist composer https://mirrors.cloud.tencent.com/composer/
+
+> composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
+
+> composer config -g repos.packagist composer https://mirrors.cloud.tencent.com/composer/
 
 #取消全局配置:
 composer config -g --unset repos.packagist

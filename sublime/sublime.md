@@ -14,6 +14,7 @@ sublime的日常使用
 
 AdvancedNewFile Plugin
 New File
+
 * super+alt+n -> "Path/To/File" "new file, use tab to autocomplete."
 * super+alt+n -> ":NewController.php" "create file in current directory."
 
@@ -190,3 +191,4 @@ FCCC7561 8A4A1741 68FA4223 ADCEDE07
 
 ## 1.隐藏侧边栏快捷键
 > {"keys": ["f1"],"command": "toggle_side_bar"}
+
