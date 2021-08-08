@@ -19,6 +19,30 @@ docker run -d --name app_redis503 -p 6380:6379 -v /usr/local/somedocker/redis/re
 
 docker run --name app_redis503 -p 6380:6379 redist:5.0.9 --requirepass 123456
 
+## docker-composer redis
+```yaml
+version: '3'
+services:
+    redis:
+		container_name: app_redis
+		image: redis:5.0.13
+		ports:
+			- 6399:6379
+		volumes:
+			- /root/jdm_hq/docker/redis/redis.conf:/etc/redis/redis.conf
+			- /root/jdm_hq/docker/redis/data:/data
+		command: redis-server /etc/redis/redis.conf
+		privileged: true
+		environment:
+			- TZ=Asia/Shanghai
+			- LANG=en_US.UTF-8
+		restart: always
+```
+
+docker-composer up -d
+
+
+
 ## start redis
 docker start|stop|restart app_redis503
 

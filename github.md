@@ -162,3 +162,54 @@ git flow hotfix finish missing-link #5.完成hotfix分支的错误修复
 [GitLab私有代码托管]
 * 官网: https://gitlab.com
 
+
+# github搜索
+0. watch-持续收到该项目的动态
+	fork-复制项目到自己的github仓库中
+	star-点赞
+	clone-下载项目到本地
+	follow-关注项目的作者
+
+1. in搜索
+```
+seckill in:name  在项目名称中搜索
+seckill in:description 在项目描述中搜索
+seckill in:readme 在项目readme文件中搜索
+seckill in:name,description,readme 在项目名称和描述中搜索
+```
+
+2. star和fork搜素
+
+```
+websocket stars:>=500 #搜索star大于500的项目
+websocket forks:>=500 #搜索fork大于500的项目
+websocket stars:>500 forks:>=500 #组合使用
+```
+
+3. awesome搜索
+
+```sh
+awesome macos
+```
+
+4. 高亮代码
+https://github.com/xudong7930/doc-centos6/src/redis.md#L20
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

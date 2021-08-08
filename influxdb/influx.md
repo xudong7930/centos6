@@ -1,6 +1,8 @@
 # influx
 
+
 ## 官网文档
+
 > 英文文档: https://docs.influxdata.com/influxdb/v1.7/
 
 > 中文文档: https://jasper-zhang1.gitbooks.io/influxdb/content/
@@ -130,8 +132,6 @@ insert cpu,host=vultr,region=us_la value=2.32,value2=0.17  1465839830100400200
 
 # 查看数据
 select "host", "region", "value" from "cpu"
-
-
 ```
 
 
@@ -182,7 +182,7 @@ show retention polices on db_name
 # time(30m) 表示每隔30分钟跑一次之前30分钟的查询
 
 create continues query "cq_30m" on "food_data" begin
-	select mean("website") as "mean_website", mean("phone") as "mean_phone" into "a_year"."down_orders" from "orders" group by time(30m)
+  select mean("website") as "mean_website", mean("phone") as "mean_phone" into "a_year"."down_orders" from "orders" group by time(30m)
 end
 
 ``` 
@@ -206,3 +206,17 @@ influxd -config /etc/influxdb/influxdb.conf
   engine = "tsm1"
   wal-dir = "/var/lib/influxdb/wal"
 ```
+
+
+
+[root@iZwz9b6lp6hgmpqkuxv3e4Z stock]# ./stock
+2021/06/29 13:40:48 getExchange
+2021/06/29 13:40:48 influx Connection...
+2021/06/29 13:40:48 CREATE RETENTION POLICY "15_day" ON "jdm" DURATION 15d REPLICATION 1 
+2021/06/29 13:40:48 Post "http://127.0.0.1:8086/query?db=jdm&params=null&q=CREATE+RETENTION+POLICY+%2215_day%22+ON+%22jdm%22+DURATION+15d+REPLICATION+1+": dial tcp 127.0.0.1:8086: connect: connection refused
+2021/06/29 13:40:48 DROP CONTINUOUS QUERY "RT_PD_1m" ON "jdm"
+2021/06/29 13:40:48 Post "http://127.0.0.1:8086/query?db=jdm&params=null&q=DROP+CONTINUOUS+QUERY+%22RT_PD_1m%22+ON+%22jdm%22": dial tcp 127.0.0.1:8086: connect: connection refused
+
+2021/06/29 13:40:48 CREATE CONTINUOUS QUERY "RT_PD_1m" ON "jdm" RESAMPLE EVERY 2s FOR 4m  BEGIN SELECT  first(last) as open,last(last) as close,last(buy) as buy,last(sell) as sell,max(last) as high,min(last) as low , sum(volume) as volume  INTO "1m_RT_PD" FROM "15_day"."1s_RT_PD" GROUP BY time(1m),* END
+2021/06/29 13:40:48 Post "http://127.0.0.1:8086/query?db=jdm&params=null&q=CREATE+CONTINUOUS+QUERY+%22RT_PD_1m%22+ON+%22jdm%22+RESAMPLE+EVERY+2s+FOR+4m++BEGIN+SELECT++first%28last%29+as+open%2Clast%28last%29+as+close%2Clast%28buy%29+as+buy%2Clast%28sell%29+as+sell%2Cmax%28last%29+as+high%2Cmin%28last%29+as+low+%2C+sum%28volume%29+as+volume++INTO+%221m_RT_PD%22+FROM+%2215_day%22.%221s_RT_PD%22+GROUP+BY+time%281m%29%2C%2A+END": dial tcp 127.0.0.1:8086: connect: connection refused
+[root@iZwz9b6lp6hgmpqkuxv3e4Z stock]# 
